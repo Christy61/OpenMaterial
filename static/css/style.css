@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.top-title {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 1rem 0.5rem;
+}
+
+.top-title span {
+    font-style: italic;
+    font-size: 1.5rem;
+}
+
+.mainSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.bal-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    /* Reduce the margin between rows */
+}
+
+.bal-container {
+    position: relative;
+    width: 48%;
+    padding-top: 36%;
+    /* 3:4 aspect ratio */
+    cursor: grab;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 5px;
+    /* Add margin to reduce space between images */
+}
+
+.bal-after,
+.bal-middle,
+.bal-before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.bal-after {
+    z-index: 10;
+    clip-path: inset(0 0 0 0);
+}
+
+.bal-middle {
+    z-index: 15;
+    clip-path: inset(0 0 0 33.33%);
+}
+
+.bal-before {
+    z-index: 20;
+    clip-path: inset(0 66.66% 0 0);
+}
+
+.bal-after img,
+.bal-middle img,
+.bal-before img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-position: 50% 50%;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.bal-beforePosition {
+    background: #383131;
+    color: #fff;
+    pointer-events: none;
+    border-radius: 0.2rem;
+    padding: 2px 10px;
+    position: absolute;
+    bottom: 4px;
+    /* Adjust position to fit smaller font */
+    left: 5px;
+    /* Adjust position to fit smaller font */
+    font-size: 11px;
+    /* Smaller font size */
+}
+
+.middleLabel,
+.bal-afterPosition {
+    background: #383131;
+    color: #fff;
+    pointer-events: none;
+    border-radius: 0.2rem;
+    padding: 2px 10px;
+    position: absolute;
+    bottom: 4px;
+    /* Adjust position to fit smaller font */
+    transform: translateX(2%);
+    font-size: 11px;
+    /* Smaller font size */
+}
+
+.bal-handle {
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    top: 50%;
+    margin-top: -18px;
+    border: 2px solid #fff;
+    border-radius: 1000px;
+    z-index: 25;
+    box-shadow: 0 0 10px rgb(12, 12, 12);
+    cursor: pointer;
+}
+
+.handle-left-arrow,
+.handle-right-arrow {
+    width: 0;
+    height: 0;
+    border: 6px inset transparent;
+    position: absolute;
+    top: 50%;
+    margin-top: -6px;
+}
+
+.handle-left-arrow {
+    border-right: 6px solid #fff;
+    left: 50%;
+    margin-left: -17px;
+}
+
+.handle-right-arrow {
+    border-left: 6px solid #fff;
+    right: 50%;
+    margin-right: -17px;
+}
+
+.bal-handle::before,
+.bal-handle::after {
+    content: " ";
+    display: block;
+    width: 2px;
+    background: #fff;
+    height: 9999px;
+    position: absolute;
+    left: 50%;
+    margin-left: -1.5px;
+    box-shadow: 0 0 10px rgb(12, 12, 12);
+}
+
+.bal-handle::before {
+    bottom: 50%;
+    margin-bottom: 20px;
+}
+
+.bal-handle::after {
+    top: 50%;
+    margin-top: 20.5px;
+}
