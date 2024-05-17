@@ -243,8 +243,8 @@
             </p>
             <p>
               OpenMaterial addresses this gap by providing a comprehensive set of data that focuses on
-              singular-material objects, thereby facilitating more precise evaluations of material-
-              based variations in radiance field reconstructions. Using this dataset, we establish
+              <b>singular-material objects</b>, thereby facilitating more precise evaluations of material-based
+              variations in radiance field reconstructions. Using this dataset, we establish
               the fist comprehensive material...
             </p>
           </div>
@@ -282,64 +282,158 @@
 
       <section class="section">
         <div class="container is-max-desktop">
-          <h2 class="title is-3">Novel View Synthesis</h2>
-          <iframe src="./static/images/comparison-nerf.html" width="100%" height="700" style="border:none;"></iframe>
-          </h2>
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-full">
+              <h2 class="title is-3">Novel View Synthesis</h2>
+              <iframe src="./static/images/comparison-nerf.html" width="100%" height="700"
+                style="border:none;"></iframe>
+              </h2>
+            </div>
+          </div>
         </div>
       </section>
 
       <section class="section">
         <div class="container is-max-desktop">
-          <h2 class="title is-3">3D Shape Reconstruction</h2>
-          <iframe src="./static/images/comparison-neus.html" width="100%" height="700" style="border:none;"></iframe>
-          </h2>
+          <div class="columns is-centered has-text-centered">
+            <div class="container is-max-desktop">
+              <h2 class="title is-3">3D Shape Reconstruction</h2>
+              <iframe src="./static/images/comparison-neus.html" width="100%" height="700"
+                style="border:none;"></iframe>
+              <p id="ref_1" class="content has-text-centered">
+                <br>Upper left is diffuse, upper right is plastic, lower left is conductor, lower right is dielectric.
+              </p>
+              </h2>
+            </div>
+          </div>
         </div>
       </section>
 
       <section class="section" id="BibTeX">
-        <div class="container is-max-desktop content">
-          <h2 class="title">BibTeX</h2>
-          <pre><code>@article{
-        <!-- park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021}, -->
-}</code></pre>
+        <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <h2 class="title">BibTeX</h2>
+              <pre><code>@article{
+              <!-- park2021nerfies,
+              author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+              title     = {Nerfies: Deformable Neural Radiance Fields},
+              journal   = {ICCV},
+              year      = {2021}, -->
+              }</code></pre>
+            </div>
+          </div>
         </div>
       </section>
 
+      <section class="section">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <h2 class="title is-3">References</h2>
+              <p id="ref_1" class="content has-text-justified">
+                <br>[1] G. Oxholm and K. Nishino, “Multiview shape and reflectance from natural illumination,” in
+                Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, 2014, pp.
+                2155–2162.
+                <br>[2] H. Aanæs, R. R. Jensen, G. Vogiatzis, E. Tola, and A. B. Dahl, “Large-scale data for multiple-
+                view stereopsis,” International Journal of Computer Vision, vol. 120, pp. 153–168, 2016.
+                <br>[3] A. Knapitsch, J. Park, Q.-Y. Zhou, and V. Koltun, “Tanks and temples: Benchmarking large-scale
+                scene reconstruction,” ACM Transactions on Graphics, vol. 36, no. 4, 2017.
+                <br>[4] B. Mildenhall, P. P. Srinivasan, R. Ortiz-Cayon, N. K. Kalantari, R. Ramamoorthi, R. Ng, and
+                A. Kar, “Local light field fusion: Practical view synthesis with prescriptive sampling guidelines,”
+                ACM Transactions on Graphics (TOG), vol. 38, no. 4, pp. 1–14, 2019.
+                <br>[5] M. Li, Z. Zhou, Z. Wu, B. Shi, C. Diao, and P. Tan, “Multi-view photometric stereo: A robust
+                solution and benchmark dataset for spatially varying isotropic materials,” IEEE Transactions on
+                Image Processing, vol. 29, pp. 4159–4173, 2020.
+                <br>[6] M. Boss, R. Braun, V. Jampani, J. T. Barron, C. Liu, and H. Lensch, “Nerd: Neural reflectance
+                decomposition from image collections,” in Proceedings of the IEEE/CVF International Confer-
+                ence on Computer Vision, 2021, pp. 12 684–12 694.
+                <br>[7] D. Verbin, P. Hedman, B. Mildenhall, T. Zickler, J. T. Barron, and P. P. Srinivasan, “Ref-
+                nerf: Structured view-dependent appearance for neural radiance fields,” in 2022 IEEE/CVF
+                Conference on Computer Vision and Pattern Recognition (CVPR). IEEE, 2022, pp. 5481–5490.
+                <br>[8] Z. Kuang, K. Olszewski, M. Chai, Z. Huang, P. Achlioptas, and S. Tulyakov, “Neroic: Neural
+                rendering of objects from online image collections,” ACM Trans. Graph., vol. 41, no. 4, jul
+                2022. [Online]. Available: https://doi.org/10.1145/3528223.3530177
+                <br>[9] M. Toschi, R. D. Matteo, R. Spezialetti, D. D. Gregorio, L. D. Stefano, and S. Salti,
+                “Relight my nerf: A dataset for novel view synthesis and relighting of real world objects,”
+                in 2023 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR). Los
+                Alamitos, CA, USA: IEEE Computer Society, jun 2023, pp. 20 762–20 772. [Online]. Available:
+                https://doi.ieeecomputersociety.org/10.1109/CVPR52729.2023.01989
+                <br>[10] Z. Kuang, Y. Zhang, H.-X. Yu, S. Agarwala, S. Wu, and J. Wu, “Stanford-orb: A real-world 3d
+                object inverse rendering benchmark,” 2023.
+                <br>[11] T. Wu, J. Zhang, X. Fu, Y. Wang, L. P. Jiawei Ren, W. Wu, L. Yang, J. Wang, C. Qian,
+                D. Lin, and Z. Liu, “Omniobject3d: Large-vocabulary 3d object dataset for realistic perception,
+                reconstruction and generation,” in IEEE/CVF Conference on Computer Vision and Pattern
+                Recognition (CVPR), 2023.
+                <br>[12] Y. Liu, P. Wang, C. Lin, X. Long, J. Wang, L. Liu, T. Komura, and W. Wang, “Nero: Neural
+                geometry and brdf reconstruction of reflective objects from multiview images,” in SIGGRAPH,
+                2023.
+                <br>[13] I. Liu, L. Chen, Z. Fu, L. Wu, H. Jin, Z. Li, C. M. R. Wong, Y. Xu, R. Ramamoorthi, Z. Xu
+                et al., “Openillumination: A multi-illumination dataset for inverse rendering evaluation on real
+                objects,” Advances in Neural Information Processing Systems, vol. 36, 2024.
+                <br>[14] V. Jampani, K.-K. Maninis, A. Engelhardt, A. Karpur, K. Truong, K. Sargent, S. Popov,
+                A. Araujo, R. Martin Brualla, K. Patel et al., “Navi: Category-agnostic image collections
+                with high-quality 3d shape and pose annotations,” Advances in Neural Information Processing
+                Systems, vol. 36, 2024.
+                <br>[15] J. Shi, Y. Dong, H. Su, and S. X. Yu, “Learning non-lambertian object intrinsics across
+                shapenet
+                categories,” in Proceedings of the IEEE conference on computer vision and pattern recognition,
+                2017, pp. 1685–1694.
+                <br>[16] Y. Yao, Z. Luo, S. Li, J. Zhang, Y. Ren, L. Zhou, T. Fang, and L. Quan, “Blendedmvs: A
+                large-scale dataset for generalized multi-view stereo networks,” Computer Vision and Pattern
+                Recognition (CVPR), 2020.
+                <br>[17] B. Mildenhall, P. P. Srinivasan, M. Tancik, J. T. Barron, R. Ramamoorthi, and R. Ng, “Nerf:
+                Representing scenes as neural radiance fields for view synthesis,” Communications of the ACM,
+                vol. 65, no. 1, pp. 99–106, 2021.
+                <br>[18] J. Collins, S. Goel, K. Deng, A. Luthra, L. Xu, E. Gundogdu, X. Zhang, T. F. Y. Vicente,
+                T. Dideriksen, H. Arora et al., “Abo: Dataset and benchmarks for real-world 3d object un-
+                derstanding,” in Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern
+                Recognition, 2022, pp. 21 126–21 136.
+                <br>[19] M. Deitke, D. Schwenk, J. Salvador, L. Weihs, O. Michel, E. VanderBilt, L. Schmidt, K. Ehsani,
+                A. Kembhavi, and A. Farhadi, “Objaverse: A universe of annotated 3d objects,” in Proceedings
+                of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2023, pp. 13 142–
+                13 153.
+                <br>[20] Y.-C. Guo, “Instant neural surface reconstruction,” 2022, https://github.com/bennyguo/instant-
+                nsr-pl.
+                <br>[21] Y. Wang, Q. Han, M. Habermann, K. Daniilidis, C. Theobalt, and L. Liu, “Neus2: Fast learning
+                of neural implicit surfaces for multi-view reconstruction,” in Proceedings of the IEEE/CVF
+                International Conference on Computer Vision (ICCV), 2023.
+                <br>[22] B. Kerbl, G. Kopanas, T. Leimkühler, and G. Drettakis, “3d gaussian splatting for real-time
+                radiance field rendering,” ACM Transactions on Graphics, vol. 42, no. 4, July 2023. [Online].
+                Available: https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/
+                <br>
+              </p>
+              <p class="auto-style1">
+                <font color="#999999">Last update: May. 17, 2024</font>
+              </p>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <footer class="footer">
         <div class="container">
           <div class="content has-text-centered">
-            <a class="icon-link" href="./static/videos/nerfies_paper.pdf">
+            <a class="icon-link" href="https://arxiv.org/">
               <i class="fas fa-file-pdf"></i>
             </a>
-            <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+            <a class="icon-link" href="https://github.com/" class="external-link" disabled>
               <i class="fab fa-github"></i>
             </a>
           </div>
           <div class="columns is-centered">
             <div class="column is-8">
-              <div class="content">
+              <div class="content has-text-centered">
                 <p>
-                  This website is licensed under a <a rel="license"
-                    href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-                    Commons Attribution-ShareAlike 4.0 International License</a>.
-                </p>
-                <p>
-                  This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source
-                    code</a> of this website,
-                  we just ask that you link back to this page in the footer.
-                  Please remember to remove the analytics code included in the header of the website which
-                  you do not want on your website.
+                  Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
                 </p>
               </div>
             </div>
           </div>
         </div>
       </footer>
+
 
 </body>
 

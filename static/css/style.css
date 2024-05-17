@@ -28,7 +28,6 @@
     justify-content: space-between;
     width: 100%;
     margin-bottom: 10px;
-    /* Reduce the margin between rows */
 }
 
 .bal-container {
@@ -92,11 +91,8 @@
     padding: 2px 10px;
     position: absolute;
     bottom: 4px;
-    /* Adjust position to fit smaller font */
     left: 5px;
-    /* Adjust position to fit smaller font */
     font-size: 11px;
-    /* Smaller font size */
 }
 
 .middleLabel,
@@ -108,10 +104,8 @@
     padding: 2px 10px;
     position: absolute;
     bottom: 4px;
-    /* Adjust position to fit smaller font */
     transform: translateX(2%);
     font-size: 11px;
-    /* Smaller font size */
 }
 
 .bal-handle {
