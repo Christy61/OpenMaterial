@@ -81,22 +81,32 @@
               Field</h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=o8BdwuMAAAAJ">Zheng
-                  Dang</a><sup>1</sup>,</span>
+                <a href="https://people.epfl.ch/zheng.dang">Zheng
+                  Dang</a><sup>1</sup></span>&nbsp;&nbsp;
               <span class="author-block">
-                <a href=" ">Jialu Huang</a><sup>2</sup>,</span>
+                Jialu Huang<sup>2</sup></span>&nbsp;&nbsp;
               <span class="author-block">
-                <a href="https://scholar.google.com.hk/citations?user=LKPpmXQAAAAJ&hl=zh-CN&oi=ao">Fei
-                  Wang</a><sup>2</sup>,
+                Fei Wang<sup>2</sup>&nbsp;&nbsp;
               </span>
               <span class="author-block">
-                <a href="https://people.epfl.ch/mathieu.salzmann">Mathieu Salzmann</a><sup>1</sup>,
+                <a href="https://people.epfl.ch/mathieu.salzmann">Mathieu Salzmann</a><sup>1</sup>
               </span>
             </div>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>xxx University</span>
-              <span class="author-block"><sup>2</sup>xxx University</span>
+              <span class="author-block"><sup>1</sup>CVLab, EPFL, Switzerland</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span class="author-block"><sup>2</sup>Xi'an Jiaotong University, China</span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <sup>1</sup> <a href="https://www.epfl.ch/"><img
+                  style="height: 65px; padding-top: 18px; padding-bottom: 3pt;" src="static/images/logo/epfl-logo.svg">
+              </a>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <sup>2</sup> <a href="http://www.xjtu.edu.cn/"><img
+                  style="height: 65px; padding-top: 12px; padding-bottom: -4pt;"
+                  src="static/images/logo/logo-xjtu.jpeg">
+              </a>
             </div>
 
             <div class="column has-text-centered">
@@ -226,24 +236,26 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              We introduce OpenMaterial, a novel dataset specifically designed for the radiance field reconstruction
-              task.
+              Recent advances in deep learning such as neural radiance fields and implicit neural representations have
+              significantly propelled the field of 3D reconstruction. However, accurately reconstructing objects with
+              <b>complex optical properties</b>, such as metals and glass, remains a formidable challenge due to their
+              unique specular and light-transmission characteristics. To facilitate the development of solutions to
+              these
+              challenges, we introduce the OpenMaterial dataset, comprising 1001 objects made of 295 distinct
+              materials—including <b>conductors</b>, <b>dielectrics</b>, <b>plastics</b>, <b>and their roughened
+                variants</b>— and captured
+              under 723 diverse lighting conditions.
             </p>
             <p>
-              Recent advances
-              in radiance field recontruction task have enabled a wide range of applications
-              in various fields. While these applications continue to see improvements, there
-              currently exists no benchmark capable of effectively assessing the performance
-              of different radiance field reconstruction methods across various <b>reflective and
-                refractive surfaces</b>, which are influenced by material differences. Existing datasets
-              typically consist of objects made from mixed materials, which are inadequate for
-              isolating and evaluating differences caused by individual materials alone.
+              To this end, we utilized <b>physics-based rendering with laboratory-measured Indices of
+                Refraction(IOR)</b> and
+              generated high-fidelity multiview images that closely replicate real-world objects. OpenMaterial provides
+              comprehensive annotations, including 3D shape, material type, camera pose, depth, and object mask.
             </p>
             <p>
-              OpenMaterial addresses this gap by providing a comprehensive set of data that focuses on
-              <b>singular-material objects</b>, thereby facilitating more precise evaluations of material-based
-              variations in radiance field reconstructions. Using this dataset, we establish
-              the fist comprehensive material...
+              It stands as the first <b>large-scale</b> dataset enabling quantitative evaluations of existing
+              algorithms on objects with diverse and challenging materials, thereby paving the way for the development
+              of 3D reconstruction algorithms capable of <b>handling complex material properties</b>.
             </p>
           </div>
         </div>
@@ -253,7 +265,7 @@
         <div class="container is-max-desktop">
           <!-- Abstract. -->
           <div class="columns is-centered has-text-centered">
-            <div class="column is-full">
+            <div class="column is-centered is-full">
               <h2 class="title is-3">Statistics and Distribution</h2>
               <iframe src="./static/tables/table.html" width="100%" height="480" style="border:none;"></iframe>
               </h2>
@@ -261,7 +273,6 @@
                 <b>Comparison</b> with Existing Object-centric MVS Datasets.
               </h2>
             </div>
-            <!--/ Abstract. -->
 
             <!-- Paper video. -->
             <!-- <div class="columns is-centered has-text-centered">
@@ -277,26 +288,41 @@
           </div>
       </section>
 
-
       <section class="section">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-full">
+              <h2 class="title is-3">Novel View Synthesis</h2>
+              <iframe src="./static/images/nerf.png" width="100%" height="1300" style="border:none;"></iframe>
+              <!-- <h2 class="subtitle has-text-centered">
+                  <span class="dnerf"><b>OpenMaterial</b></span> Qualitative result of the material result.
+                </h2> -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- <section class="section">
         <div class="container is-max-desktop">
           <div class="columns is-centered has-text-centered">
             <div class="column is-full">
               <h2 class="title is-3">Novel View Synthesis</h2>
               <iframe src="./static/images/comparison-nerf.html" width="100%" height="700"
                 style="border:none;"></iframe>
-              </h2>
+              <p id="ref_1" class="content has-text-centered">
+                <br>Upper left is diffuse, upper right is plastic, lower left is conductor, lower right is dielectric.
+              </p>
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <section class="section">
         <div class="container is-max-desktop">
           <div class="columns is-centered has-text-centered">
             <div class="container is-max-desktop">
               <h2 class="title is-3">3D Shape Reconstruction</h2>
-              <iframe src="./static/images/comparison-neus.html" width="100%" height="700"
+              <iframe src="./static/images/comparison-neus.html" width="100%" height="720"
                 style="border:none;"></iframe>
               <p id="ref_1" class="content has-text-centered">
                 <br>Upper left is diffuse, upper right is plastic, lower left is conductor, lower right is dielectric.
