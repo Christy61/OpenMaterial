@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qualitative Result on Novel View Synthesis Task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container-n {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0px;
+        }
+
+        .column_left {
+            flex: 0 0 47.38%;
+        }
+
+        .column_right {
+            flex: 0 0 52.12%;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .sub-caption {
+            text-align: center;
+            font-size: 1em;
+            margin-top: 0px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-n">
+        <!-- Conductor -->
+        <div class="row">
+            <!-- Left big image -->
+            <div class="column_left">
+                <img src="vis-nerf/2d_gt_conductor.png" alt="2D GT Conductor">
+            </div>
+            <!-- Right small images in 2x3 grid -->
+            <div class="column_right grid">
+                <img src="vis-nerf-sub/gt-conductor.png" alt="GT Conductor">
+                <img src="vis-nerf-sub/gaussian-conductor.png" alt="Gaussian Conductor">
+                <img src="vis-nerf-sub/ngp-conductor.png" alt="NGP Conductor">
+                <img src="vis-nerf-sub/gt-conductor-1.png" alt="GT Conductor 1">
+                <img src="vis-nerf-sub/gaussian-conductor-1.png" alt="Gaussian Conductor 1">
+                <img src="vis-nerf-sub/ngp-conductor-1.png" alt="NGP Conductor 1">
+            </div>
+        </div>
+
+        <!-- Dielectric -->
+        <div class="row">
+            <!-- Left big image -->
+            <div class="column_left">
+                <img src="vis-nerf/2d_gt_dielectric.png" alt="2D GT Dielectric">
+            </div>
+            <!-- Right small images in 2x3 grid -->
+            <div class="column_right grid">
+                <img src="vis-nerf-sub/gt-dielectric.png" alt="GT Dielectric">
+                <img src="vis-nerf-sub/gaussian-dielectric.png" alt="Gaussian Dielectric">
+                <img src="vis-nerf-sub/ngp-dielectric.png" alt="NGP Dielectric">
+                <img src="vis-nerf-sub/gt-dielectric-1.png" alt="GT Dielectric 1">
+                <img src="vis-nerf-sub/gaussian-dielectric-1.png" alt="Gaussian Dielectric 1">
+                <img src="vis-nerf-sub/ngp-dielectric-1.png" alt="NGP Dielectric 1">
+            </div>
+        </div>
+
+        <!-- Plastic -->
+        <div class="row">
+            <!-- Left big image -->
+            <div class="column_left">
+                <img src="vis-nerf/2d_gt_plastic.png" alt="2D GT Plastic">
+            </div>
+            <!-- Right small images in 2x3 grid -->
+            <div class="column_right grid">
+                <img src="vis-nerf-sub/gt-plastic.png" alt="GT Plastic">
+                <img src="vis-nerf-sub/gaussian-plastic.png" alt="Gaussian Plastic">
+                <img src="vis-nerf-sub/ngp-plastic.png" alt="NGP Plastic">
+                <img src="vis-nerf-sub/gt-plastic-1.png" alt="GT Plastic 1">
+                <img src="vis-nerf-sub/gaussian-plastic-1.png" alt="Gaussian Plastic 1">
+                <img src="vis-nerf-sub/ngp-plastic-1.png" alt="NGP Plastic 1">
+            </div>
+        </div>
+
+        <!-- Diffuse -->
+        <div class="row">
+            <!-- Left big image -->
+            <div class="column_left">
+                <img src="vis-nerf/2d_gt_diffuse.png" alt="2D GT Diffuse">
+            </div>
+            <!-- Right small images in 2x3 grid -->
+            <div class="column_right grid">
+                <img src="vis-nerf-sub/gt-diffuse.png" alt="GT Diffuse">
+                <img src="vis-nerf-sub/gaussian-diffuse.png" alt="Gaussian Diffuse">
+                <img src="vis-nerf-sub/ngp-diffuse.png" alt="NGP Diffuse">
+                <img src="vis-nerf-sub/gt-diffuse-1.png" alt="GT Diffuse 1">
+                <img src="vis-nerf-sub/gaussian-diffuse-1.png" alt="Gaussian Diffuse 1">
+                <img src="vis-nerf-sub/ngp-diffuse-1.png" alt="NGP Diffuse 1">
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Left big image -->
+            <div class="column_left">
+                <div class="sub-caption">Diffuse</div>
+            </div>
+            <!-- Right small images in 2x3 grid -->
+            <div class="column_right grid">
+                <div class="sub-caption">Groundtruth</div>
+                <div class="sub-caption">3DGS</div>
+                <div class="sub-caption">InstantNGP</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="caption">
+        <strong>Qualitative result on the novel view synthesis task.</strong> From top to bottom: Conductor, Dielectric,
+        Plastic, Diffuse. From left to right: GT (whole), GT (local), 3D Gaussian-Splatting, Instant-NGP.
+    </div>
+
+</body>
+
+</html>

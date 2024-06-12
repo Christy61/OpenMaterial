@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1f1f1f;
+            color: #ddd;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .button-card {
+            background-color: #333;
+            border-radius: 10px;
+            text-align: center;
+            padding: 20px;
+            text-decoration: none;
+            color: #ddd;
+            width: 150px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .button-card:hover {
+            transform: translateY(-5px);
+            background-color: #444;
+        }
+
+        .icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .button-card img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .description {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <a href="page1.html" class="button-card">
+            <img src="icons/devops.png" alt="DevOps">
+            <div class="title">DevOps Engineers</div>
+            <div class="description">Description for DevOps</div>
+        </a>
+        <a href="page2.html" class="button-card">
+            <img src="icons/data_scientists.png" alt="Data Scientists">
+            <div class="title">Data Scientists</div>
+            <div class="description">Description for Data</div>
+        </a>
+        <a href="page3.html" class="button-card">
+            <img src="icons/software_engineers.png" alt="Software Engineers">
+            <div class="title">Software Engineers</div>
+            <div class="description">Description for Software</div>
+        </a>
+        <a href="page4.html" class="button-card">
+            <img src="icons/support_teams.png" alt="Support Teams">
+            <div class="title">Support Teams</div>
+            <div class="description">Description for Support</div>
+        </a>
+        <a href="page5.html" class="button-card">
+            <img src="icons/engineering_leaders.png" alt="Engineering Leaders">
+            <div class="title">Engineering Leaders</div>
+            <div class="description">Description for Leaders</div>
+        </a>
+    </div>
+
+</body>
+
+</html>
