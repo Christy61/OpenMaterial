@@ -2,25 +2,19 @@ class BeforeAfter {
     constructor(entryObject) {
         const beforeAfterContainer = document.querySelector(entryObject.id);
         const before = beforeAfterContainer.querySelector('.bal-before');
-        const middle = beforeAfterContainer.querySelector('.bal-middle');
         const after = beforeAfterContainer.querySelector('.bal-after');
-        const handle1 = document.getElementById(entryObject.handle1);
-        const handle2 = document.getElementById(entryObject.handle2);
+        const handle = document.getElementById(entryObject.handle);
         const beforeLabel = beforeAfterContainer.querySelector('.beforeLabel');
-        const middleLabel = beforeAfterContainer.querySelector('.middleLabel');
         const afterLabel = beforeAfterContainer.querySelector('.afterLabel');
 
         const updateClipPaths = () => {
             const containerWidth = beforeAfterContainer.offsetWidth;
-            const handle1Pos = handle1.offsetLeft + handle1.offsetWidth / 2;
-            const handle2Pos = handle2.offsetLeft + handle2.offsetWidth / 2;
+            const handlePos = handle.offsetLeft + handle.offsetWidth / 2;
 
-            before.style.clipPath = `inset(0 ${containerWidth - handle1Pos}px 0 0)`;
-            middle.style.clipPath = `inset(0 ${containerWidth - handle2Pos}px 0 ${handle1Pos}px)`;
-            after.style.clipPath = `inset(0 0 0 ${handle2Pos}px)`;
+            before.style.clipPath = `inset(0 ${containerWidth - handlePos}px 0 0)`;
+            after.style.clipPath = `inset(0 0 0 ${handlePos}px)`;
 
-            middleLabel.style.left = `${handle1Pos}px`;
-            afterLabel.style.left = `${handle2Pos}px`;
+            afterLabel.style.left = `${handlePos}px`;
         };
 
         const handleDrag = (handle, callback) => {
@@ -51,13 +45,8 @@ class BeforeAfter {
             handle.addEventListener('mousedown', onMouseDown);
         };
 
-        handleDrag(handle1, (newLeft) => {
-            handle1.style.left = `${newLeft - handle1.offsetWidth / 2}px`;
-            updateClipPaths();
-        });
-
-        handleDrag(handle2, (newLeft) => {
-            handle2.style.left = `${newLeft - handle2.offsetWidth / 2}px`;
+        handleDrag(handle, (newLeft) => {
+            handle.style.left = `${newLeft - handle.offsetWidth / 2}px`;
             updateClipPaths();
         });
 
@@ -96,8 +85,13 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 1; i <= 4; i++) {
         new BeforeAfter({
             id: `#example${i}`,
-            handle1: `handle1-${i}`,
-            handle2: `handle2-${i}`
+            handle: `handle1-${i}`
         });
     }
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('.no-drag').forEach((img) => {
+        img.ondragstart = () => false;
+    });
 });

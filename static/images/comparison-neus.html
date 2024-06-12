@@ -7,35 +7,65 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Before &lt; | &gt; After Slider</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .container-n {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0px;
+        }
+
+        .column_left {
+            flex: 0 0 50%;
+        }
+
+        .column_right {
+            flex: 0 0 50%;
+        }
+
+        .sub-caption {
+            text-align: center;
+            font-size: 22px;
+            margin-top: 0px;
+            font-weight: 800;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="container-n">
+        <div class="row">
+            <div class="column_left">
+                <div class="sub-caption">Instant-NeuS</div>
+            </div>
 
+            <div class="column_right">
+                <div class="sub-caption">NeuS2</div>
+            </div>
+        </div>
+    </div>
+    <br>
     <div class="mainSection">
         <div class="bal-row">
             <div id="example1" class="bal-container">
                 <div class="bal-after">
-                    <img src="vis-neus-a/diffuse-instant-nsr-pl.png" alt="After Image">
-                    <div class="bal-afterPosition afterLabel"><b>Instant-NGP</b></div>
-                </div>
-
-                <div class="bal-middle">
-                    <img src="vis-neus-a/diffuse-neus2.png" alt="Middle Image">
-                    <div class="middleLabel"><b>NeuS2</b></div>
+                    <img src="vis-neus-a/diffuse-instant-nsr-pl.png" class="no-drag" alt="After Image">
+                    <div class="bal-afterPosition afterLabel no-select"><b>Instant-NeuS</b></div>
                 </div>
 
                 <div class="bal-before">
                     <div class="bal-before-inset">
-                        <img src="vis-neus-a/diffuse-gt.png" alt="Before Image">
-                        <div class="bal-beforePosition beforeLabel"><b>Ground Truth</b></div>
+                        <img src="vis-neus-a/diffuse-gt.png" class="no-drag" alt="Before Image">
+                        <div class="bal-beforePosition beforeLabel no-select"><b>Ground Truth</b></div>
                     </div>
                 </div>
 
-                <div class="bal-handle" id="handle1-1" style="left: 33.33%;">
-                    <span class="handle-left-arrow"></span>
-                    <span class="handle-right-arrow"></span>
-                </div>
-                <div class="bal-handle" id="handle2-1" style="left: 66.66%;">
+                <div class="bal-handle" id="handle1-1" style="left: 49%;">
                     <span class="handle-left-arrow"></span>
                     <span class="handle-right-arrow"></span>
                 </div>
@@ -43,27 +73,18 @@
 
             <div id="example2" class="bal-container">
                 <div class="bal-after">
-                    <img src="vis-neus-a/plastic-instant-nsr-pl.png" alt="After Image">
-                    <div class="bal-afterPosition afterLabel"><b>Instant-NGP</b></div>
-                </div>
-
-                <div class="bal-middle">
-                    <img src="vis-neus-a/plastic-neus2.png" alt="Middle Image">
-                    <div class="middleLabel"><b>NeuS2</b></div>
+                    <img src="vis-neus-a/diffuse-neus2.png" class="no-drag" alt="After Image">
+                    <div class="bal-afterPosition afterLabel no-select"><b>NeuS2</b></div>
                 </div>
 
                 <div class="bal-before">
                     <div class="bal-before-inset">
-                        <img src="vis-neus-a/plastic-gt.png" alt="Before Image">
-                        <div class="bal-beforePosition beforeLabel"><b>Ground Truth</b></div>
+                        <img src="vis-neus-a/diffuse-gt.png" class="no-drag" alt="Before Image">
+                        <div class="bal-beforePosition beforeLabel no-select"><b>Ground Truth</b></div>
                     </div>
                 </div>
 
-                <div class="bal-handle" id="handle1-2" style="left: 33.33%;">
-                    <span class="handle-left-arrow"></span>
-                    <span class="handle-right-arrow"></span>
-                </div>
-                <div class="bal-handle" id="handle2-2" style="left: 66.66%;">
+                <div class="bal-handle" id="handle1-2" style="left: 46%;">
                     <span class="handle-left-arrow"></span>
                     <span class="handle-right-arrow"></span>
                 </div>
@@ -73,27 +94,18 @@
         <div class="bal-row">
             <div id="example3" class="bal-container">
                 <div class="bal-after">
-                    <img src="vis-neus-a/conductor-instant-nsr-pl.png" alt="After Image">
-                    <div class="bal-afterPosition afterLabel"><b>Instant-NGP</b></div>
-                </div>
-
-                <div class="bal-middle">
-                    <img src="vis-neus-a/conductor-neus2.png" alt="Middle Image">
-                    <div class="middleLabel"><b>NeuS2</b></div>
+                    <img src="vis-neus-a/plastic-instant-nsr-pl.png" class="no-drag" alt="After Image">
+                    <div class="bal-afterPosition afterLabel no-select"><b>Instant-NeuS</b></div>
                 </div>
 
                 <div class="bal-before">
                     <div class="bal-before-inset">
-                        <img src="vis-neus-a/conductor-gt.png" alt="Before Image">
-                        <div class="bal-beforePosition beforeLabel"><b>Ground Truth</b></div>
+                        <img src="vis-neus-a/plastic-gt.png" class="no-drag" alt="Before Image">
+                        <div class="bal-beforePosition beforeLabel no-select"><b>Ground Truth</b></div>
                     </div>
                 </div>
 
-                <div class="bal-handle" id="handle1-3" style="left: 33.33%;">
-                    <span class="handle-left-arrow"></span>
-                    <span class="handle-right-arrow"></span>
-                </div>
-                <div class="bal-handle" id="handle2-3" style="left: 66.66%;">
+                <div class="bal-handle" id="handle1-3" style="left: 49%;">
                     <span class="handle-left-arrow"></span>
                     <span class="handle-right-arrow"></span>
                 </div>
@@ -101,27 +113,96 @@
 
             <div id="example4" class="bal-container">
                 <div class="bal-after">
-                    <img src="vis-neus-a/dielectric-instant-nsr-pl.png" alt="After Image">
-                    <div class="bal-afterPosition afterLabel"><b>Instant-NGP</b></div>
-                </div>
-
-                <div class="bal-middle">
-                    <img src="vis-neus-a/dielectric-neus2.png" alt="Middle Image">
-                    <div class="middleLabel"><b>NeuS2</b></div>
+                    <img src="vis-neus-a/plastic-neus2.png" class="no-drag" alt="After Image">
+                    <div class="bal-afterPosition afterLabel no-select"><b>NeuS2</b></div>
                 </div>
 
                 <div class="bal-before">
                     <div class="bal-before-inset">
-                        <img src="vis-neus-a/dielectric-gt.png" alt="Before Image">
-                        <div class="bal-beforePosition beforeLabel"><b>Ground Truth</b></div>
+                        <img src="vis-neus-a/plastic-gt.png" class="no-drag" alt="Before Image">
+                        <div class="bal-beforePosition beforeLabel no-select"><b>Ground Truth</b></div>
                     </div>
                 </div>
 
-                <div class="bal-handle" id="handle1-4" style="left: 33.33%;">
+                <div class="bal-handle" id="handle1-4" style="left: 46%;">
                     <span class="handle-left-arrow"></span>
                     <span class="handle-right-arrow"></span>
                 </div>
-                <div class="bal-handle" id="handle2-4" style="left: 66.66%;">
+            </div>
+        </div>
+
+        <div class="bal-row">
+            <div id="example5" class="bal-container">
+                <div class="bal-after">
+                    <img src="vis-neus-a/conductor-instant-nsr-pl.png" class="no-drag" alt="After Image">
+                    <div class="bal-afterPosition afterLabel no-select"><b>Instant-NeuS</b></div>
+                </div>
+
+                <div class="bal-before">
+                    <div class="bal-before-inset">
+                        <img src="vis-neus-a/conductor-gt.png" class="no-drag" alt="Before Image">
+                        <div class="bal-beforePosition beforeLabel no-select"><b>Ground Truth</b></div>
+                    </div>
+                </div>
+
+                <div class="bal-handle" id="handle1-5" style="left: 49%;">
+                    <span class="handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                </div>
+            </div>
+
+            <div id="example6" class="bal-container">
+                <div class="bal-after">
+                    <img src="vis-neus-a/conductor-neus2.png" class="no-drag" alt="After Image">
+                    <div class="bal-afterPosition afterLabel no-select"><b>NeuS2</b></div>
+                </div>
+
+                <div class="bal-before">
+                    <div class="bal-before-inset">
+                        <img src="vis-neus-a/conductor-gt.png" class="no-drag" alt="Before Image">
+                        <div class="bal-beforePosition beforeLabel no-select"><b>Ground Truth</b></div>
+                    </div>
+                </div>
+
+                <div class="bal-handle" id="handle1-6" style="left: 46%;">
+                    <span class="handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                </div>
+            </div>
+        </div>
+        <div class="bal-row">
+            <div id="example7" class="bal-container">
+                <div class="bal-after">
+                    <img src="vis-neus-a/dielectric-instant-nsr-pl.png" class="no-drag" alt="After Image">
+                    <div class="bal-afterPosition afterLabel no-select"><b>Instant-NeuS</b></div>
+                </div>
+
+                <div class="bal-before">
+                    <div class="bal-before-inset">
+                        <img src="vis-neus-a/dielectric-gt.png" class="no-drag" alt="Before Image">
+                        <div class="bal-beforePosition beforeLabel no-select"><b>Ground Truth</b></div>
+                    </div>
+                </div>
+                <div class="bal-handle" id="handle1-7" style="left: 49%;">
+                    <span class="handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                </div>
+            </div>
+
+            <div id="example8" class="bal-container">
+                <div class="bal-after">
+                    <img src="vis-neus-a/dielectric-neus2.png" class="no-drag" alt="After Image">
+                    <div class="bal-afterPosition afterLabel no-select"><b>NeuS2</b></div>
+                </div>
+
+                <div class="bal-before">
+                    <div class="bal-before-inset">
+                        <img src="vis-neus-a/dielectric-gt.png" class="no-drag" alt="Before Image">
+                        <div class="bal-beforePosition beforeLabel no-select"><b>Ground Truth</b></div>
+                    </div>
+                </div>
+
+                <div class="bal-handle" id="handle1-8" style="left: 46%;">
                     <span class="handle-left-arrow"></span>
                     <span class="handle-right-arrow"></span>
                 </div>

@@ -178,6 +178,39 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-max-desktop">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Recent advances in deep learning such as neural radiance fields and implicit neural representations have
+              significantly propelled the field of 3D reconstruction. However, accurately reconstructing objects with
+              <b>complex optical properties</b>, such as metals and glass, remains a formidable challenge due to their
+              unique specular and light-transmission characteristics. To facilitate the development of solutions to
+              these
+              challenges, we introduce the OpenMaterial dataset, comprising 1001 objects made of 295 distinct
+              materials—including <b>conductors</b>, <b>dielectrics</b>, <b>plastics</b>, <b>and their roughened
+                variants</b>— and captured
+              under 723 diverse lighting conditions.
+            </p>
+            <p>
+              To this end, we utilized <b>physics-based rendering with laboratory-measured Indices of
+                Refraction(IOR)</b> and
+              generated high-fidelity multiview images that closely replicate real-world objects. OpenMaterial provides
+              comprehensive annotations, including 3D shape, material type, camera pose, depth, and object mask.
+            </p>
+            <p>
+              It stands as the first <b>large-scale</b> dataset enabling quantitative evaluations of existing
+              algorithms on objects with diverse and challenging materials, thereby paving the way for the development
+              of 3D reconstruction algorithms capable of <b>handling complex material properties</b>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- <section class="hero is-light is-small">
     <div class="hero-body">
@@ -231,8 +264,8 @@
   <section class="section">
     <div class="container-b">
       <div class="button-container">
-        <div class="button-card" onclick="showContent('Abstract')">
-          <div class="title-b">Abstract</div>
+        <div class="button-card" onclick="showContent('Preview')">
+          <div class="title-b">Preview</div>
         </div>
         <div class="button-card" onclick="showContent('Statistics-and-Distribution')">
           <div class="title-b">Statistics and Distribution</div>
@@ -248,7 +281,7 @@
         </div>
       </div>
 
-      <div class="content-container" id="content-Abstract">
+      <div class="content-container" id="content-Preview">
         <div class="container is-max-desktop">
           <!-- Abstract. -->
           <div class="columns is-centered has-text-centered">
@@ -296,12 +329,11 @@
       </div>
       <div class="content-container" id="content-Novel-View-Synthesis">
         <br>
-        <iframe src="./static/images/comparison-nerf-a.html" width="100%" height="1650" style="border:none;"></iframe>
-        <br>
+        <iframe src="./static/images/comparison-nerf-a.html" width="100%" height="1710" style="border:none;"></iframe>
       </div>
       <div class="content-container" id="content-3D-Shape-Reconstruction">
         <br>
-        <iframe src="./static/images/comparison-neus.html" width="100%" height="860" style="border:none;"></iframe>
+        <iframe src="./static/images/comparison-neus.html" width="100%" height="1800" style="border:none;"></iframe>
         <br>
       </div>
       <div class="content-container" id="content-References">

@@ -29,14 +29,14 @@ hr {
 }
 
 .button-card {
-  background-color: #2b2b2b;
+  background-color: #2c2c2c;
   color: #fff;
-  border-radius: 15px;
+  border-radius: 22px;
   text-align: center;
   padding: 20px;
   text-decoration: none;
-  width: 175px;
-  height: 100px;
+  width: 190px;
+  height: 110px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,12 +58,12 @@ hr {
 }
 
 .button-card .title-b {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 620;
 }
 
 .button-card.active {
-  transform: scale(1.1);
+  transform: scale(1.2);
   width: 170px;
 }
 
@@ -73,7 +73,7 @@ hr {
   width: 100%;
   /* Ensure it is centered */
   padding: 10px;
-  border: 1px solid #444;
+  border: 2px solid #444;
   border-radius: 10px;
   background-color: #f0f0f0;
   margin-top: 20px;
@@ -89,7 +89,7 @@ hr {
   width: 100%;
   max-width: 1200px;
   padding: 20px;
-  border: 1px solid #000;
+  border: 2px solid #000;
   border-radius: 10px;
   background-color: #fff;
 }

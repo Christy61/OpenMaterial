@@ -1,9 +1,11 @@
+/* 全局样式重置 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* 顶部标题样式 */
 .top-title {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -15,6 +17,7 @@
     font-size: 1.5rem;
 }
 
+/* 主容器样式 */
 .mainSection {
     display: flex;
     flex-direction: column;
@@ -23,6 +26,7 @@
     width: 100%;
 }
 
+/* 行样式 */
 .bal-row {
     display: flex;
     justify-content: space-between;
@@ -34,16 +38,13 @@
     position: relative;
     width: 48%;
     padding-top: 36%;
-    /* 3:4 aspect ratio */
     cursor: grab;
     overflow: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 5px;
-    /* Add margin to reduce space between images */
 }
 
 .bal-after,
-.bal-middle,
 .bal-before {
     display: block;
     position: absolute;
@@ -56,21 +57,15 @@
 
 .bal-after {
     z-index: 10;
-    clip-path: inset(0 0 0 0);
-}
-
-.bal-middle {
-    z-index: 15;
-    clip-path: inset(0 0 0 33.33%);
+    clip-path: inset(0 0 0 50%);
 }
 
 .bal-before {
     z-index: 20;
-    clip-path: inset(0 66.66% 0 0);
+    clip-path: inset(0 50% 0 0);
 }
 
 .bal-after img,
-.bal-middle img,
 .bal-before img {
     object-fit: cover;
     width: 100%;
@@ -83,7 +78,8 @@
     user-select: none;
 }
 
-.bal-beforePosition {
+.bal-beforePosition,
+.bal-afterPosition {
     background: #383131;
     color: #fff;
     pointer-events: none;
@@ -93,19 +89,7 @@
     bottom: 4px;
     left: 5px;
     font-size: 11px;
-}
-
-.middleLabel,
-.bal-afterPosition {
-    background: #383131;
-    color: #fff;
-    pointer-events: none;
-    border-radius: 0.2rem;
-    padding: 2px 10px;
-    position: absolute;
-    bottom: 4px;
     transform: translateX(2%);
-    font-size: 11px;
 }
 
 .bal-handle {
@@ -166,31 +150,29 @@
     margin-top: 20.5px;
 }
 
-table {
-    border-collapse: collapse;
+.no-drag {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
-.table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(0, 0, 0, 0.05);
+.no-select {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-}
-
-th,
-td {
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 8px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    white-space: normal;
-}
-
-th {
-    background-color: #f2f2f2;
+.label {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    color: #333;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
