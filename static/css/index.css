@@ -63,7 +63,7 @@ hr {
 }
 
 .button-card.active {
-  transform: scale(1.2);
+  transform: scale(1.25);
   width: 170px;
 }
 
@@ -71,7 +71,6 @@ hr {
   display: none;
   text-align: center;
   width: 100%;
-  /* Ensure it is centered */
   padding: 10px;
   border: 2px solid #444;
   border-radius: 10px;

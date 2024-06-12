@@ -7,3 +7,7 @@ function showContent(section) {
     document.getElementById(`content-${section}`).classList.add('visible');
     document.querySelector(`.button-card[onclick="showContent('${section}')"]`).classList.add('active');
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    showContent('Preview');
+});

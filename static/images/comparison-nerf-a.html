@@ -38,8 +38,10 @@
 
         .sub-caption {
             text-align: center;
-            font-size: 1em;
-            margin-top: 0px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: -5px;
+            margin-bottom: 6px;
         }
 
         img {
@@ -59,6 +61,18 @@
 <body>
 
     <div class="container-n">
+        <div class="row">
+            <!-- Left big image -->
+            <div class="column_left">
+                <div class="sub-caption">Diffuse</div>
+            </div>
+            <!-- Right small images in 2x3 grid -->
+            <div class="column_right grid">
+                <div class="sub-caption">Groundtruth</div>
+                <div class="sub-caption">3DGS</div>
+                <div class="sub-caption">InstantNGP</div>
+            </div>
+        </div>
         <!-- Conductor -->
         <div class="row">
             <!-- Left big image -->
@@ -124,19 +138,6 @@
                 <img src="vis-nerf-sub/gt-diffuse-1.png" alt="GT Diffuse 1">
                 <img src="vis-nerf-sub/gaussian-diffuse-1.png" alt="Gaussian Diffuse 1">
                 <img src="vis-nerf-sub/ngp-diffuse-1.png" alt="NGP Diffuse 1">
-            </div>
-        </div>
-
-        <div class="row">
-            <!-- Left big image -->
-            <div class="column_left">
-                <div class="sub-caption">Diffuse</div>
-            </div>
-            <!-- Right small images in 2x3 grid -->
-            <div class="column_right grid">
-                <div class="sub-caption">Groundtruth</div>
-                <div class="sub-caption">3DGS</div>
-                <div class="sub-caption">InstantNGP</div>
             </div>
         </div>
     </div>
