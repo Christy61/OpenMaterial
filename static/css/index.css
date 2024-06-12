@@ -35,3 +35,8 @@
 #preview-image {
   max-width: 200px;
 }
+
+.black-link {
+  color: black;
+  text-decoration: none;
+}
