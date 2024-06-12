@@ -82,7 +82,7 @@ class BeforeAfter {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    for (let i = 1; i <= 8; i++) {
+    for (let i = 1; i <= 10; i++) {
         new BeforeAfter({
             id: `#example${i}`,
             handle: `handle1-${i}`
