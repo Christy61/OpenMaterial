@@ -1,0 +1,332 @@
+[
+    {
+        "name": "Ag",
+        "shelf": "main",
+        "book": "Ag",
+        "page": "Babar"
+    },
+    {
+        "name": "Al",
+        "shelf": "main",
+        "book": "Al",
+        "page": "Cheng"
+    },
+    {
+        "name": "Au",
+        "shelf": "main",
+        "book": "Au",
+        "page": "Babar"
+    },
+    {
+        "name": "Be",
+        "shelf": "main",
+        "book": "Be",
+        "page": "Rakic-LD"
+    },
+    {
+        "name": "Bi",
+        "shelf": "main",
+        "book": "Bi",
+        "page": "Werner-DFT"
+    },
+    {
+        "name": "Ca",
+        "shelf": "main",
+        "book": "Ca",
+        "page": "Mathewson"
+    },
+    {
+        "name": "Co",
+        "shelf": "main",
+        "book": "Co",
+        "page": "Johnson"
+    },
+    {
+        "name": "Cr",
+        "shelf": "main",
+        "book": "Cr",
+        "page": "Rakic-LD"
+    },
+    {
+        "name": "Cs",
+        "shelf": "main",
+        "book": "Cs",
+        "page": "Smith"
+    },
+    {
+        "name": "Cu",
+        "shelf": "main",
+        "book": "Cu",
+        "page": "Rakic-BB"
+    },
+    {
+        "name": "Fe",
+        "shelf": "main",
+        "book": "Fe",
+        "page": "Johnson"
+    },
+    {
+        "name": "Ge",
+        "shelf": "main",
+        "book": "Ge",
+        "page": "Aspnes"
+    },
+    {
+        "name": "Hg",
+        "shelf": "main",
+        "book": "Hg",
+        "page": "Inagaki"
+    },
+    {
+        "name": "In",
+        "shelf": "main",
+        "book": "In",
+        "page": "Mathewson-298K"
+    },
+    {
+        "name": "Ir",
+        "shelf": "main",
+        "book": "Ir",
+        "page": "Schmitt-ALD"
+    },
+    {
+        "name": "K",
+        "shelf": "main",
+        "book": "K",
+        "page": "Smith"
+    },
+    {
+        "name": "Li",
+        "shelf": "main",
+        "book": "Li",
+        "page": "Mathewson-298K"
+    },
+    {
+        "name": "Lu",
+        "shelf": "main",
+        "book": "Lu",
+        "page": "Garcia-Cortes"
+    },
+    {
+        "name": "Mg",
+        "shelf": "main",
+        "book": "Mg",
+        "page": "Palm"
+    },
+    {
+        "name": "Mn",
+        "shelf": "main",
+        "book": "Mn",
+        "page": "Johnson"
+    },
+    {
+        "name": "Mo",
+        "shelf": "main",
+        "book": "Mo",
+        "page": "Kirillova"
+    },
+    {
+        "name": "Na",
+        "shelf": "main",
+        "book": "Na",
+        "page": "Inagaki"
+    },
+    {
+        "name": "Nb",
+        "shelf": "main",
+        "book": "Nb",
+        "page": "Weaver"
+    },
+    {
+        "name": "Ni",
+        "shelf": "main",
+        "book": "Ni",
+        "page": "Rakic-BB"
+    },
+    {
+        "name": "Os",
+        "shelf": "main",
+        "book": "Os",
+        "page": "Nemoshkalenko-o"
+    },
+    {
+        "name": "Pb",
+        "shelf": "main",
+        "book": "Pb",
+        "page": "Mathewson-298K"
+    },
+    {
+        "name": "Pd",
+        "shelf": "main",
+        "book": "Pd",
+        "page": "Rakic-BB"
+    },
+    {
+        "name": "Pt",
+        "shelf": "main",
+        "book": "Pt",
+        "page": "Rakic-BB"
+    },
+    {
+        "name": "Rb",
+        "shelf": "main",
+        "book": "Rb",
+        "page": "Smith"
+    },
+    {
+        "name": "Rh",
+        "shelf": "main",
+        "book": "Rh",
+        "page": "Weaver"
+    },
+    {
+        "name": "Ta",
+        "shelf": "main",
+        "book": "Ta",
+        "page": "Werner"
+    },
+    {
+        "name": "Ti",
+        "shelf": "main",
+        "book": "Ti",
+        "page": "Johnson"
+    },
+    {
+        "name": "V",
+        "shelf": "main",
+        "book": "V",
+        "page": "Johnson"
+    },
+    {
+        "name": "W",
+        "shelf": "main",
+        "book": "W",
+        "page": "Rakic-BB"
+    },
+    {
+        "name": "Zn",
+        "shelf": "main",
+        "book": "Zn",
+        "page": "Werner"
+    },
+    {
+        "name": "Zr",
+        "shelf": "main",
+        "book": "Zr",
+        "page": "Palm"
+    },
+    {
+        "name": "90%Au-10%Ag",
+        "shelf": "other",
+        "book": "Au-Ag",
+        "page": "Rioux-Au90Ag10"
+    },
+    {
+        "name": "80%Au-20%Ag",
+        "shelf": "other",
+        "book": "Au-Ag",
+        "page": "Rioux-Au80Ag20"
+    },
+    {
+        "name": "70%Au-30%Ag",
+        "shelf": "other",
+        "book": "Au-Ag",
+        "page": "Rioux-Au70Ag30"
+    },
+    {
+        "name": "60%Au-40%Ag",
+        "shelf": "other",
+        "book": "Au-Ag",
+        "page": "Rioux-Au60Ag40"
+    },
+    {
+        "name": "50%Au-50%Ag",
+        "shelf": "other",
+        "book": "Au-Ag",
+        "page": "Rioux-Au50Ag50"
+    },
+    {
+        "name": "40%Au-60%Ag",
+        "shelf": "other",
+        "book": "Au-Ag",
+        "page": "Rioux-Au40Ag60"
+    },
+    {
+        "name": "30%Au-70%Ag",
+        "shelf": "other",
+        "book": "Au-Ag",
+        "page": "Rioux-Au30Ag70"
+    },
+    {
+        "name": "20%Au-80%Ag",
+        "shelf": "other",
+        "book": "Au-Ag",
+        "page": "Rioux-Au20Ag80"
+    },
+    {
+        "name": "10%Au-90%Ag",
+        "shelf": "other",
+        "book": "Au-Ag",
+        "page": "Rioux-Au10Ag90"
+    },
+    {
+        "name": "90%Cu-10%Zn",
+        "shelf": "other",
+        "book": "Cu-Zn",
+        "page": "Querry-Cu90Zn10"
+    },
+    {
+        "name": "85%Cu-15%Zn",
+        "shelf": "other",
+        "book": "Cu-Zn",
+        "page": "Querry-Cu85Zn15"
+    },
+    {
+        "name": "70%Cu-30%Zn",
+        "shelf": "other",
+        "book": "Cu-Zn",
+        "page": "Querry-Cu70Zn30"
+    },
+    {
+        "name": "Ni-Fe-gold-coated-150nm",
+        "shelf": "other",
+        "book": "Ni-Fe",
+        "page": "Tikuisis_gold150nm"
+    },
+    {
+        "name": "Ni-Fe-gold-coated-10nm",
+        "shelf": "other",
+        "book": "Ni-Fe",
+        "page": "Tikuisis_gold10nm"
+    },
+    {
+        "name": "Ni-Fe-bare-150nm",
+        "shelf": "other",
+        "book": "Ni-Fe",
+        "page": "Tikuisis_bare150nm"
+    },
+    {
+        "name": "Ni-Fe-bare-10nm",
+        "shelf": "other",
+        "book": "Ni-Fe",
+        "page": "Tikuisis_bare10nm"
+    },
+    {
+        "name": "Pd-H",
+        "shelf": "other",
+        "book": "Pd-H",
+        "page": "Palm"
+    },
+    {
+        "name": "V-H",
+        "shelf": "other",
+        "book": "V-H",
+        "page": "Palm"
+    },
+    {
+        "name": "Zr-H",
+        "shelf": "other",
+        "book": "Zr-H",
+        "page": "Palm"
+    }
+]

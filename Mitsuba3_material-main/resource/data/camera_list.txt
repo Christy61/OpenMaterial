@@ -1,0 +1,19 @@
+[
+    'canon_eos_100d',
+    'canon_eos_1dx_mkii',
+    'canon_eos_200d',
+    'canon_eos_200d_mkii',
+    'canon_eos_5d',
+    'canon_eos_5d_mkii',
+    'canon_eos_5d_mkiii',
+    'canon_eos_5d_mkiv',
+    'canon_eos_5ds',
+    'canon_eos_m',
+    'hasselblad_l1d_20c',
+    'nikon_d810',
+    'nikon_d850',
+    'sony_ilce_6400',
+    'sony_ilce_7m3',
+    'sony_ilce_7rm3',
+    'sony_ilce_9'
+]
