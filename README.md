@@ -8,9 +8,9 @@ for ${method}: method can be instant-nsr-pl and NeuS2
 
 ```shell
 cd ${method}
-chmod +x run_mitsuba.sh
-bash run_mitsuba.sh $gpu 
-# for example: bash run_mitsuba.sh 0
+chmod +x run_openmaterial.sh
+bash run_openmaterial.sh $gpu 
+# for example: bash run_openmaterial.sh 0
 cd ../
 ``` 
 
@@ -25,19 +25,12 @@ ${object}:${method}:${material}:${PSNR}-${SSIM}
 eval after training with all methods
 
 ```shell
-cd Mitsuba3_material-main
-chmod +x eval/eval_mitsuba.sh
-bash eval/eval_mitsuba.sh ../Mesh ../output
+cd Openmaterial-main
+chmod +x eval/eval.sh
+bash eval/eval.sh ../Mesh ../output
 cd ../
 ```
 
-for sphere:
-```shell
-cd Mitsuba3_material-main
-chmod +x eval/eval_mitsuba.sh
-bash eval/eval_mitsuba.sh ../Sphere_mesh ../sphere
-cd ../
-```
 
 the result are stored in the "mesh_evaluation/output.txt" in the following format:
 

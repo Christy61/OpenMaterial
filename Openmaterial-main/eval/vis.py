@@ -1,7 +1,7 @@
 import trimesh
 import os
 import mitsuba as mi
-mi.set_variant('cuda_spectral')
+mi.set_variant('cuda_ad_rgb')
 from mitsuba import ScalarTransform4f as T
 import numpy as np
 from PIL import Image
@@ -32,8 +32,8 @@ def load_floor(scene_dict, bbox):
             [-1, -1, 0, 0],
             [0, 0, 0, 1]])
     scale_mat = [
-        [50, 0, 0, 0], 
-        [0, 50, 0, 0],
+        [20, 0, 0, 0], 
+        [0, 20, 0, 0],
         [0, 0, 1, 0],
         [0, 0, 0, 1]
     ]
@@ -108,11 +108,12 @@ def load_K_Rt_from_P(filename, P=None):
     return intrinsics, pose
 
 
-def load_object(scene_dict, file_name):
+def load_object(scene_dict, file_name, flip=False):
     object_dir = {
         'type': 'ply', 
         'id': 'Material_0001',
         'filename': file_name, 
+        'flip_normals': flip,
         'to_world': T([[1, 0, 0, 0],
                     [0, 1, 0, 0],
                     [0, 0, 1, 0],
@@ -120,13 +121,11 @@ def load_object(scene_dict, file_name):
         'bsdf': {
             'type': 'twosided',
             'material':{
-                'type': 'roughplastic', 
-                'distribution': 'beckmann',
-                'alpha': 0.05,
-                'diffuse_reflectance': {
-                    'type': 'rgb',
-                    'value': [0.4, 0.4, 0.4]
-                    }
+            'type': 'diffuse', 
+            "reflectance": {
+                "type": "rgb",
+                "value": [0.38, 0.77, 0.88]
+            }
             }
         }
     }
@@ -137,31 +136,18 @@ def load_object(scene_dict, file_name):
 def load_emitter(scene_dict, pose):
     angle = np.pi/3
     pitch = np.pi/2
-    target = np.array([0.0, 0.0, 0.0])
-    up_vector = [0.866, 0.0, 0.5]
-    x = 3.8 * np.cos(angle) * np.cos(pitch)
-    y = 3.8 * np.sin(pitch)
-    z = 3.8 * np.sin(angle) * np.cos(pitch)
-    camera_position = [x, y, z]
-    scale_mat = [
-        [10, 0, 0, 0], 
-        [0, 10, 0, 0],
-        [0, 0, 1, 0],
-        [0, 0, 0, 1]
-    ]
-    trans = T.look_at(target=target, origin=camera_position, up=up_vector)
-    to_world = pose @ trans.matrix.numpy() @ scale_mat
+    x = 4.2 * np.cos(angle) * np.cos(pitch)
+    y = 4.2 * np.sin(pitch)
+    z = 4.2 * np.sin(angle) * np.cos(pitch)
+    trans = [[0, 0, -20, x],
+        [-0, 20, 0, y],
+        [20, 0, 0, z],
+        [0, 0, 0, 1]]
+    to_world = pose @ trans
     to_world = T(to_world)
     emitter_dir = {
-        'type': 'rectangle',
-        'to_world': to_world, 
-        'emitter': {
-            'type': 'area',
-            'radiance': {
-                'type': 'rgb',
-                'value': 1.0,
-            }
-        }
+        'type': 'envmap',
+        'filename': f'textures/envmap.hdr'
     }
     scene_dict['shape_emitter'] = emitter_dir
     return scene_dict
@@ -171,7 +157,7 @@ def load_integrator(scene_dict):
     integrator_dir = {
         'type': 'path',
         'max_depth': 65,
-        'hide_emitters': False
+        'hide_emitters': True
     }
     scene_dict['integrator'] = integrator_dir
     return scene_dict
@@ -187,20 +173,15 @@ def recalculate_vertex_normals(mesh_file, object_name):
     ms.save_current_mesh(new_mesh_file)
     return new_mesh_file
 
-def gen_mask(depth):
-
-    _, mask = cv.threshold(depth, 1e-5, 1.0+1e-5, cv.THRESH_BINARY)
-    return mask
-
-def render(object_name, new_mesh_file, pic_i, floor):
-    dataset_dir = f'../datasets/mitsuba3_synthetic'
+def render(object_name, new_mesh_file, pic_i, floor, flip):
+    dataset_dir = f'../datasets/Openmaterial'
     scene_dict= {'type': 'scene'}
     scene_dict = load_integrator(scene_dict)
-    scene_dict = load_object(scene_dict, new_mesh_file)
-    scene_wo_floor = mi.load_dict(scene_dict)
+    scene_dict = load_object(scene_dict, new_mesh_file, flip)
+    scene = mi.load_dict(scene_dict)
     
-    bbox = scene_wo_floor.bbox()
-    cameras_path = glob.glob(os.path.join(f'../groundtruth', '1d3425d6c69c42ae96bace55253503f9', 'cameras_sphere_test.npz'))[0]
+    bbox = scene.bbox()
+    cameras_path = glob.glob(os.path.join(dataset_dir, object_name, '*', 'test', 'cameras_sphere.npz'))[0]
     cameras = np.load(cameras_path)
 
     world_mat = cameras['world_mat_{}'.format(pic_i)]
@@ -217,83 +198,60 @@ def render(object_name, new_mesh_file, pic_i, floor):
     scene = mi.load_dict(scene_dict)
 
     noisy = mi.render(scene, sensor=sensor, spp=256)
-    integrator1 = mi.load_string(
-        """
-        <integrator type="depth" version="3.5.0">
-        </integrator>
-        """
-        )
-    depth_ = mi.render(scene_wo_floor, integrator=integrator1, spp=512, sensor=sensor)
-    depth = depth_[:,:,0].numpy()
     shape_n = noisy.shape[::-1]  
-    depth_normalized = (depth - depth.min()) / (depth.max() - depth.min())
-    mask = gen_mask(depth_normalized)
-    noisy = mi.TensorXf(np.concatenate((noisy, mask[..., None]), axis=-1))
-    shape_n = noisy.shape[::-1]
     denoiser = mi.OptixDenoiser(input_size=shape_n[1:3], albedo=False, normals=False, temporal=False)
     denoised = denoiser(noisy)
     image_np = mi.TensorXf(denoised).numpy()
     image = (image_np * 255 / np.max(image_np)).astype('uint8')
     
-    return Image.fromarray(image).convert('RGBA')
+    return Image.fromarray(image).convert('RGB')
 
 
-def convert_if_list(input):
-    if isinstance(input, list) and len(input) == 1:
-        return input[0]  
-    return input
-
-
-def main(input_dir, pic_i, floor, start, end, picked):
-    mi.set_variant("cuda_spectral")
+def main(input_dir, pic_i, floor, start, end):
+    mi.set_variant("cuda_ad_rgb")
     os.makedirs(f'../visualization', exist_ok=True)
     column_gt = []
     column_neus2 = []
     column_instant_nsl_neus = []
-    object_names = os.listdir(f'{input_dir}/neus2')
-    if picked:
-        with open('../vis.txt', 'r') as file:
-            object_names = [line.strip().split(' ') for line in file]
+    object_names = os.listdir(f'{input_dir}/neus2/CleanedMesh')
+    print(object_names)
     print("start render...")
     for object_name in object_names[int(start):int(end)]:
-        object_name = convert_if_list(object_name)
         print(f"render scene: {object_name}")
         if pic_i == None:
-            for i in tqdm(range(1)):
-                gt_mesh = os.path.join(f'{input_dir}/groundtruth', object_name, f'clean_{object_name}.ply')
-                column_gt.append(render(object_name, gt_mesh, i, floor))
+            for i in tqdm(range(40)):
+                # gt_mesh = os.path.join(f'{input_dir}/groundtruth', object_name, f'clean_{object_name}.ply')
+                # column_gt.append(render(object_name, gt_mesh, i, floor))
 
-                root_neus2_pr = os.path.join(input_dir, 'neus2', object_name)
+                root_neus2_pr = os.path.join(input_dir, 'neus2', 'CleanedMesh', object_name)
                 neus2_pr = glob.glob(os.path.join(root_neus2_pr, '*.ply'))[0]
-                name1 = os.path.split(neus2_pr)[-1][:-4]
-                bsdf_name = name1.split('-')[0]
                 neus2_pr = recalculate_vertex_normals(neus2_pr, object_name)
                 column_neus2.append(render(object_name, neus2_pr, i, floor))
 
-                root_instant_pr = os.path.join(input_dir, 'instant-nsr-pl-wmask', object_name)
+                root_instant_pr = os.path.join(input_dir, 'NeRO', 'CleanedMesh', object_name)
                 instant_pr = glob.glob(os.path.join(root_instant_pr, '*.ply'))[0]
                 column_instant_nsl_neus.append(render(object_name, instant_pr, i, floor))
                 
                 imgs_2d = [column_gt, column_neus2, column_instant_nsl_neus]
                 img_grid = ImageGrid()
                 grid_image = img_grid.get_image_grid(imgs_2d)
-                os.makedirs(f'../visualization/{bsdf_name}', exist_ok=True)
-                grid_image.save(f'../visualization/{bsdf_name}/output_{object_name}_{i}.png')
+                os.makedirs(f'../visualization/{object_name}', exist_ok=True)
+                grid_image.save(f'../visualization/{object_name}/output_{object_name}_{i}.png')
                 column_gt = []
                 column_neus2 = []
                 column_instant_nsl_neus = []
         else:
-            gt_mesh = os.path.join(f'{input_dir}/groundtruth', object_name, f'clean_{object_name}.ply')
-            column_gt.append(render(object_name, gt_mesh, pic_i, floor))
+            gt = Image.open(os.path.join(f'../{object_name}.png'))
+            column_gt.append(gt)
 
-            root_neus2_pr = os.path.join(input_dir, 'neus2', object_name)
+            root_neus2_pr = os.path.join(input_dir, 'neus2', 'CleanedMesh', object_name)
             neus2_pr = glob.glob(os.path.join(root_neus2_pr, '*.ply'))[0]
             neus2_pr = recalculate_vertex_normals(neus2_pr, object_name)
-            column_neus2.append(render(object_name, neus2_pr, pic_i, floor))
+            column_neus2.append(render(object_name, neus2_pr, pic_i, floor, False))
 
-            root_instant_pr = os.path.join(input_dir, 'instant-nsr-pl-wmask', object_name)
+            root_instant_pr = os.path.join(input_dir, 'NeRO', 'CleanedMesh', object_name)
             instant_pr = glob.glob(os.path.join(root_instant_pr, '*.ply'))[0]
-            column_instant_nsl_neus.append(render(object_name, instant_pr, pic_i, floor))
+            column_instant_nsl_neus.append(render(object_name, instant_pr, pic_i, floor, True))
             
     if pic_i:
         imgs_2d = [column_gt, column_neus2, column_instant_nsl_neus]
@@ -305,10 +263,9 @@ def main(input_dir, pic_i, floor, start, end, picked):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--floor', action='store_true', help='add floor or not, do not use it in dtu dataset')
-    parser.add_argument('--picked', action='store_true', default=False)
     parser.add_argument('--pic_num', type=str, default=None, help='the number of pose you want to visualize.')
     parser.add_argument('--start', type=str, default='0')
-    parser.add_argument('--end', type=str, default='7')
+    parser.add_argument('--end', type=str, default='3')
     parser.add_argument('--input_dir', type=str, help='location of your ply model')
     args = parser.parse_args()
-    main(args.input_dir, args.pic_num, args.floor, args.start, args.end, args.picked)
+    main(args.input_dir, args.pic_num, args.floor, args.start, args.end)

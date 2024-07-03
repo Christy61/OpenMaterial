@@ -94,7 +94,7 @@ class BlenderIterableDataset(IterableDataset, BlenderDatasetBase):
             yield {}
 
 
-@datasets.register('mitsuba-womask')
+@datasets.register('openmaterial-womask')
 class BlenderDataModule(pl.LightningDataModule):
     def __init__(self, config):
         super().__init__()

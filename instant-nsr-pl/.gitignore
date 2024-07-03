@@ -150,5 +150,3 @@ exp/
 runs/
 load/
 extern/
-
-run_mitsuba_sphere.sh

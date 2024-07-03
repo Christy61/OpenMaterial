@@ -10,11 +10,11 @@ if [ -d "$directory" ]; then
         for subdir2 in "${directory}/${subdir_name1}/meshes/"*; do
             subdir_name2=$(basename "$subdir2")
             echo "clean_mesh start: ${subdir_name1}"
-            # python eval/clean_mesh_mitsuba.py --method ${subdir_name1} --directory ${directory}/${subdir_name1} --object_name ${subdir_name2}
+            python eval/clean_mesh.py --method ${subdir_name1} --directory ${directory}/${subdir_name1} --object_name ${subdir_name2}
             echo "evaluation start:"
             for subdir3 in "${directory}/${subdir_name1}/CleanedMesh/${subdir_name2}/"*; do
                 subdir_name3=$(basename "$subdir3")
-                python eval/eval_mitsuba.py \
+                python eval/eval.py \
                 --pr ${directory}/${subdir_name1}/CleanedMesh/${subdir_name2}/${subdir_name3} \
                 --gt ../groundtruth/${subdir_name2}/clean_${subdir_name2}.ply \
                 --object ${subdir_name2} \
