@@ -1,8 +1,17 @@
 # Benchmarking_Everything
 
-Due to the large dataset, we would like to use huggingface in conjunction with webdataset to achieve the goal of being able to use the data without having to download all of it, but at the moment that part of the code has not yet been sorted out.
+## 1. download dataset
 
-## 1. start training
+Get your own token
+1. Click on your avatar in the upper right corner and select "Settings".
+2. On the "Settings" page, click "Access Tokens" on the left side.
+3. Generate a new Token and copy it.
+
+```shell
+python download.py --token <your-token> --type all
+``` 
+
+## 2. start training
 
 for ${method}: method can be instant-nsr-pl and NeuS2
 
@@ -20,7 +29,7 @@ the result of nerf are stored in the "instant-nsr-pl-output-womask/output.txt" i
 ${object}:${method}:${material}:${PSNR}-${SSIM}
 ```
 
-## 2. Eval
+## 3. Eval
 
 eval after training with all methods
 
