@@ -23,6 +23,9 @@ parser.add_argument('--token', type=str, help='your own token', required=True)
 parser.add_argument('--type', type=str, help='Types of materials to download, all for all downloads', required=True)
 # Either choose one from bsdf_names or "all"
 
+parser.add_argument('--depth', action='store_true', help='Whether depth data is required')
+# Whether depth data is required
+
 args = parser.parse_args()
 
 login(token=args.token)
@@ -34,12 +37,22 @@ if args.type in bsdf_names:
     material_type = args.type
     LOCAL_DIR = f"datasets/openmaterial"
     os.makedirs(LOCAL_DIR, exist_ok=True)
-    files_to_download = [f"{material_type}-{i:06d}.tar" for i in range(1024)]  # Adjust the range based on the number of shards
+    files_to_download = [f"{material_type}-{i:06d}.tar" for i in range(3)]
+
+    if args.depth:
+        all_files = list_repo_files(REPO_ID, repo_type="dataset")
+        depthfile = [file for file in all_files if file.endswith('.tar') and file.startswith(f'depth-{material_type}')]
+        files_to_download.extend(depthfile)
+
 elif args.type == 'all':
     LOCAL_DIR = "datasets/openmaterial"
     os.makedirs(LOCAL_DIR, exist_ok=True)
     all_files = list_repo_files(REPO_ID, repo_type="dataset")
-    files_to_download = [file for file in all_files if file.endswith('.tar')]
+    if args.depth:
+        files_to_download = [file for file in all_files if file.endswith('.tar')]
+    else:
+        files_to_download = [file for file in all_files if file.endswith('.tar') and not file.startswith('depth')]
+
 else:
     raise ValueError("There's no such material.")
 

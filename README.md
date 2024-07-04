@@ -11,6 +11,14 @@ Get your own token
 python download.py --token <your-token> --type all
 ``` 
 
+an example for using depth data (Here are the real depth values, not normalised):
+
+```python
+with h5py.File(filename, 'r') as hdf:
+    dataset = hdf['depth']
+    depth = dataset[:]  # size: (1200, 1600) 
+```
+
 ## 2. start training
 
 for ${method}: method can be instant-nsr-pl and NeuS2
