@@ -46,3 +46,9 @@ the result are stored in the "mesh_evaluation/output.txt" in the following forma
 ```shell
 ${object}:${method}:${material}:${cds}
 ```
+
+Run the following command to integrate the results:
+
+```shell
+python sum_metrics.py
+```
