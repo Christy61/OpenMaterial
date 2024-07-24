@@ -1,7 +1,7 @@
-from huggingface_hub import login, list_repo_files, hf_hub_download
+from huggingface_hub import login, list_repo_files, hf_hub_download, snapshot_download
 import os
 import argparse
-
+import multiprocessing
 
 bsdf_names = [
     'diffuse',
@@ -33,33 +33,22 @@ os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
 
 REPO_ID = "EPFL-CVLab/OpenMaterial"
 
-if args.type in bsdf_names:
-    material_type = args.type
-    LOCAL_DIR = f"datasets/openmaterial"
-    os.makedirs(LOCAL_DIR, exist_ok=True)
-    files_to_download = [f"{material_type}-{i:06d}.tar" for i in range(3)]
-
-    if args.depth:
-        all_files = list_repo_files(REPO_ID, repo_type="dataset")
-        depthfile = [file for file in all_files if file.endswith('.tar') and file.startswith(f'depth-{material_type}')]
-        files_to_download.extend(depthfile)
-
-elif args.type == 'all':
-    LOCAL_DIR = "datasets/openmaterial"
-    os.makedirs(LOCAL_DIR, exist_ok=True)
-    all_files = list_repo_files(REPO_ID, repo_type="dataset")
-    if args.depth:
-        files_to_download = [file for file in all_files if file.endswith('.tar')]
+if __name__ == "__main__":    
+    if args.type in bsdf_names:
+        material_type = args.type
+        LOCAL_DIR = f"datasets/openmaterial"
+        os.makedirs(LOCAL_DIR, exist_ok=True)
+        snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"{material_type}-000000.tar", ignore_patterns="depth*.tar",local_dir=LOCAL_DIR, token=args.token)
+        if args.depth:
+            snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"depth-{material_type}*.tar",local_dir=LOCAL_DIR, token=args.token)
+    elif args.type == 'all':
+        LOCAL_DIR = "datasets/openmaterial"
+        os.makedirs(LOCAL_DIR, exist_ok=True)
+        snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns="*.tar", ignore_patterns="depth-*.tar",local_dir=LOCAL_DIR, token=args.token)
+        if args.depth:
+            snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns="depth*.tar", local_dir=LOCAL_DIR, token=args.token)
     else:
-        files_to_download = [file for file in all_files if file.endswith('.tar') and not file.startswith('depth')]
+        raise ValueError("There's no such material.")
 
-else:
-    raise ValueError("There's no such material.")
-
-# Download the dataset
-for filename in files_to_download:
-    try:
-        local_path = hf_hub_download(repo_id=REPO_ID, repo_type="dataset", filename=filename, local_dir=LOCAL_DIR)
-        print(f"Downloaded {filename} to {local_path}")
-    except Exception as e:
-        print(f"Failed to download {filename}: {e}")
+    os.makedirs("./dataset", exist_ok=True)
+    snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"groundtruth.tar", ignore_patterns="depth*.tar",local_dir="groundtruth", token=args.token)

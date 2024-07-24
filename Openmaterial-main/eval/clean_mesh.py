@@ -8,7 +8,8 @@ import mitsuba as mi
 mi.set_variant('cuda_ad_rgb')
 from mitsuba import ScalarTransform4f as T
 import numpy as np
-
+import json
+import math
 
 """
 This code is adapted from:
@@ -16,18 +17,59 @@ https://github.com/xxlong0/SparseNeuS/blob/main/evaluation/clean_mesh.py
 
 """
 
+def gen_w2c(pose):
+    
+    pose[:3, :1] = -pose[:3, :1]
+    pose[:3, 1:2] = -pose[:3, 1:2]  # Flip the x+ and y+ to align coordinate system
+
+    R = pose[:3, :3].transpose()
+    T = -R @ pose[:3, 3:]
+    return R, T
+
+def gen_camera_intrinsic(width, height, fov_x, fov_y):
+    fx = width / 2.0 / math.tan(fov_x / 180 * math.pi / 2.0)
+    fy = height / 2.0 / math.tan(fov_y / 180 * math.pi / 2.0)
+    return fx, fy
+
 def clean_points_by_mask(points, scene_name, imgs_idx=None, minimal_vis=0, mask_dilated_size=11):
-    cameras = np.load('../groundtruth/{}/cameras_sphere.npz'.format(scene_name))
-    mask_lis = sorted(glob('../groundtruth/{}/mask/*.png'.format(scene_name)))
+    json_path = glob(f'../datasets/openmaterial/{scene_name}/*/transforms_train.json')[0]
+    with open(json_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    fov_x = 37.8492
+    fov_y = 28.8415
+    width, height = 1600, 1200 
+    # transform to Colmap format 
+    fx, fy = gen_camera_intrinsic(width, height, fov_x, fov_y)
+    
+    # use float64 to avoid loss of precision
+    intrinsic = np.diag([fx, fy, 1.0, 1.0]).astype(np.float64)
+    # The origin is in the center and not in the upper left corner of the image
+    intrinsic[0, 2] = width / 2.0
+    intrinsic[1, 2] = height / 2.0
+    flip_mat = np.array([
+        [-1, 0, 0, 0],
+        [0, 1, 0, 0],
+        [0, 0, -1, 0],
+        [0, 0, 0, 1]
+    ])
+    bottom = np.array([0, 0, 0, 1.]).reshape([1, 4])
+    scale_mat = np.diag([1.0, 1.0, 1.0, 1.0])
+    
+    mask_lis = sorted(glob(f'../datasets/openmaterial/{scene_name}/*/train/mask/*.png'))
     n_images = len(mask_lis)
     inside_mask = np.zeros(len(points))
 
     if imgs_idx is None:
         imgs_idx = [i for i in range(n_images)]
 
-    for i in imgs_idx:
-        P = cameras['world_mat_{}'.format(i)]
-        scale_mat = cameras['scale_mat_%d' % i]
+    for i, frame in enumerate(data['frames']):
+        cam_pose_ = np.matmul(frame['transform_matrix'], flip_mat)
+        cam_pose = np.array(cam_pose_)
+        R, T = gen_w2c(cam_pose)
+        w2c = np.concatenate([np.concatenate([R, T], 1), bottom], 0)
+        world_mat = intrinsic @ w2c
+
+        P = world_mat
         P = P @ scale_mat
         P = P[:3, :4]
         pts_image = np.matmul(P[None, :3, :3], points[:, :, None]).squeeze() + P[None, :3, 3]
@@ -51,20 +93,50 @@ def clean_points_by_mask(points, scene_name, imgs_idx=None, minimal_vis=0, mask_
 
         inside_mask += curr_mask
 
+        if i > len(imgs_idx):
+            break
+
     return inside_mask > minimal_vis
 
 
 def clean_points_by_visualhull(points, scene_name, imgs_idx=None, minimal_vis=0, mask_dilated_size=11):
-    cameras = np.load('../groundtruth/{}/cameras_sphere.npz'.format(scene_name))
-    mask_lis = sorted(glob('../groundtruth/{}/mask/*.png'.format(scene_name)))
+    json_path = glob(f'../datasets/openmaterial/{scene_name}/*/transforms_train.json')[0]
+    with open(json_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    fov_x = 37.8492
+    fov_y = 28.8415
+    width, height = 1600, 1200 
+
+    # transform to Colmap format 
+    fx, fy = gen_camera_intrinsic(width, height, fov_x, fov_y)
+
+    # use float64 to avoid loss of precision
+    intrinsic = np.diag([fx, fy, 1.0, 1.0]).astype(np.float64)
+    # The origin is in the center and not in the upper left corner of the image
+    intrinsic[0, 2] = width / 2.0
+    intrinsic[1, 2] = height / 2.0
+    flip_mat = np.array([
+        [-1, 0, 0, 0],
+        [0, 1, 0, 0],
+        [0, 0, -1, 0],
+        [0, 0, 0, 1]
+    ])
+    bottom = np.array([0, 0, 0, 1.]).reshape([1, 4])
+    scale_mat = np.diag([1.0, 1.0, 1.0, 1.0])
+    mask_lis = sorted(glob(f'../datasets/openmaterial/{scene_name}/*/train/mask/*.png'))
     n_images = len(mask_lis)
     outside_mask = np.zeros(len(points))
     if imgs_idx is None:
         imgs_idx = [i for i in range(n_images)]
 
     for i in imgs_idx:
-        P = cameras['world_mat_{}'.format(i)]
-        scale_mat = cameras['scale_mat_%d' % i]
+        cam_pose_ = np.matmul(data['frames'][i]['transform_matrix'], flip_mat)
+        cam_pose = np.array(cam_pose_)
+        R, T = gen_w2c(cam_pose)
+        w2c = np.concatenate([np.concatenate([R, T], 1), bottom], 0)
+        world_mat = intrinsic @ w2c
+
+        P = world_mat
         P = P @ scale_mat
         P = P[:3, :4]
         
@@ -205,8 +277,7 @@ if __name__ == "__main__":
             clean_mesh_file = os.path.join(base_path, f"clean_{scene_name}.ply")
             os.makedirs("{}/CleanedMesh/{}".format(directory, object_name), exist_ok=True)
             visualhull_mesh_file = f'{directory}/CleanedMesh/{object_name}/{scene_name}.ply'
-
-            scene_path = glob(os.path.join('../groundtruth', object_name, '*.ply'))[0]
+            scene_path = glob(os.path.join('../datasets/groundtruth', object_name, '*.ply'))[0]
             scene_path = os.path.abspath(scene_path)
             scene_dict= {'type': 'scene'}
             scene_dict = load_integrator(scene_dict)

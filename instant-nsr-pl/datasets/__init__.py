@@ -13,4 +13,4 @@ def make(name, config):
     return dataset
 
 
-from . import blender, colmap, dtu, openmaterial_wmask, openmaterial_womask
+from . import blender, colmap, openmaterial_wmask, openmaterial_womask

@@ -28,3 +28,5 @@ gen_sphere_box.sh
 cam_render_sphere_box.py
 output.log
 resource/
+eval/visualization.py
+eval/vis.py

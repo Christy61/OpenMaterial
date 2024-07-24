@@ -16,7 +16,7 @@ if [ -d "$directory" ]; then
                 subdir_name3=$(basename "$subdir3")
                 python eval/eval.py \
                 --pr ${directory}/${subdir_name1}/CleanedMesh/${subdir_name2}/${subdir_name3} \
-                --gt ../groundtruth/${subdir_name2}/clean_${subdir_name2}.ply \
+                --gt ../datasets/groundtruth/${subdir_name2}/clean_${subdir_name2}.ply \
                 --object ${subdir_name2} \
                 --method ${subdir_name1} \
                 --output ${output_dir}

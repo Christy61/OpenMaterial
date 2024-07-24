@@ -133,14 +133,14 @@ def write_colmap(img_path, output_dir, json_path, flag, is_train):
             rot = rot.as_quat()
             image_name = '{:03d}.png'.format(i)
             f.write('{} {} {} {} {} {} {} {} {} {}\n\n'.format(i + 1, rot[3], rot[0], rot[1], rot[2], T[0, 0], T[1, 0], T[2, 0], 1, image_name))
-    np.savez(f"{img_path}/cameras_sphere.npz", **camera_params)
-    if flag and is_train:
-        os.makedirs(f"../groundtruth/{object_name}", exist_ok=True)
-        np.savez(f"../groundtruth/{object_name}/cameras_sphere.npz", **camera_params)
-        flag = False
-    elif flag and not is_train:
-        np.savez(f"../groundtruth/{object_name}/cameras_sphere_test.npz", **camera_params)
-        flag = False
+    # np.savez(f"{img_path}/cameras_sphere.npz", **camera_params)
+    # if flag and is_train:
+    #     os.makedirs(f"../groundtruth/{object_name}", exist_ok=True)
+    #     np.savez(f"../groundtruth/{object_name}/cameras_sphere.npz", **camera_params)
+    #     flag = False
+    # elif flag and not is_train:
+    #     np.savez(f"../groundtruth/{object_name}/cameras_sphere_test.npz", **camera_params)
+    #     flag = False
 
 
 if __name__ == '__main__':
