@@ -67,6 +67,19 @@ ${object}:${method}:${material}:${PSNR}-${SSIM}
 
 ## 3. Eval
 
+If you want to use scripts, make sure you store the mesh in the following file format:
+
+```shell
+Mesh
+├── instant-nsr-pl-wmask
+│   ├── meshes
+│       ├── 5c4ae9c4a3cb47a4b6273eb2839a7b8c
+│           └── diffuse.ply
+│       ├── 5c0514eae1f94f22bc5475fe0970cd28
+│           └── diffuse.ply
+│       └── ... 
+```
+
 eval after training with all methods
 
 ```shell
