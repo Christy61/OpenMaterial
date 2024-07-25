@@ -11,6 +11,34 @@ Get your own token
 python download.py --token <your-token> --type all
 ``` 
 
+after running this, The following file structure is obtained
+
+```shell
+datasets
+├── groundtruth
+│   ├── 5c4ae9c4a3cb47a4b6273eb2839a7b8c
+│       └── clean_5c4ae9c4a3cb47a4b6273eb2839a7b8c.ply
+│   ├── 5c0514eae1f94f22bc5475fe0970cd28
+│       └── clean_5c0514eae1f94f22bc5475fe0970cd28.ply
+│   └── ... 
+├── openmaterial
+│   ├── 5c4ae9c4a3cb47a4b6273eb2839a7b8c
+│       ├── train
+│           ├── images
+│           ├── mask
+│       ├── test
+│       ├── transforms_train.json
+│       └── transforms_test.json
+│   ├── 5c0514eae1f94f22bc5475fe0970cd28
+│   └── ... 
+```
+
+If you need to use depth, please use the following command:
+
+```shell
+python download.py --token <your-token> --type all --depth
+``` 
+
 an example for using depth data (Here are the real depth values, not normalised):
 
 ```python
