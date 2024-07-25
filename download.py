@@ -1,7 +1,7 @@
-from huggingface_hub import login, list_repo_files, hf_hub_download, snapshot_download
+from huggingface_hub import login, snapshot_download
 import os
 import argparse
-import multiprocessing
+from glob import glob
 
 bsdf_names = [
     'diffuse',
@@ -34,21 +34,37 @@ os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
 REPO_ID = "EPFL-CVLab/OpenMaterial"
 
 if __name__ == "__main__":    
+    LOCAL_DIR = f"datasets/openmaterial"
     if args.type in bsdf_names:
         material_type = args.type
-        LOCAL_DIR = f"datasets/openmaterial"
         os.makedirs(LOCAL_DIR, exist_ok=True)
-        snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"{material_type}-000000.tar", ignore_patterns="depth*.tar",local_dir=LOCAL_DIR, token=args.token)
+        snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"{material_type}-*.tar", ignore_patterns="depth*.tar",local_dir=LOCAL_DIR, token=args.token)
+        tar_paths = glob(os.path.join(LOCAL_DIR, f"{material_type}-*.tar"))
+        for tar_path in tar_paths:
+            cmd = f'tar -xvf {tar_path} -C {LOCAL_DIR}'
+            print(cmd)
+            os.system(cmd)
         if args.depth:
             snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"depth-{material_type}*.tar",local_dir=LOCAL_DIR, token=args.token)
     elif args.type == 'all':
-        LOCAL_DIR = "datasets/openmaterial"
         os.makedirs(LOCAL_DIR, exist_ok=True)
         snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns="*.tar", ignore_patterns="depth-*.tar",local_dir=LOCAL_DIR, token=args.token)
+        tar_paths = glob(os.path.join(LOCAL_DIR, "*.tar"))
+        for tar_path in tar_paths:
+            cmd = f'tar -xvf {tar_path} -C {LOCAL_DIR}'
+            print(cmd)
+            os.system(cmd)
         if args.depth:
             snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns="depth*.tar", local_dir=LOCAL_DIR, token=args.token)
     else:
         raise ValueError("There's no such material.")
 
-    os.makedirs("./dataset", exist_ok=True)
+    os.makedirs("./datasets", exist_ok=True)
     snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"groundtruth.tar", ignore_patterns="depth*.tar",local_dir="groundtruth", token=args.token)
+    cmd = f'tar -xvf ./datasets/groundtruth.tar -C ./datasets'
+    print(cmd)
+    os.system(cmd)
+
+    cmd = f'rm -r {LOCAL_DIR}/*.tar'
+    print(cmd)
+    os.system(cmd)

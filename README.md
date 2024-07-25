@@ -11,13 +11,6 @@ Get your own token
 python download.py --token <your-token> --type all
 ``` 
 
-unzip files
-```shell
-# for example
-tar -xvf diffuse-*.tar
-rm -r diffuse-*.tar
-``` 
-
 an example for using depth data (Here are the real depth values, not normalised):
 
 ```python
