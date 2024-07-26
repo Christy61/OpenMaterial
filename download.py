@@ -60,7 +60,7 @@ if __name__ == "__main__":
         raise ValueError("There's no such material.")
 
     os.makedirs("./datasets", exist_ok=True)
-    snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"groundtruth.tar", ignore_patterns="depth*.tar",local_dir="groundtruth", token=args.token)
+    snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"groundtruth.tar", ignore_patterns="depth*.tar",local_dir="./datasets", token=args.token)
     cmd = f'tar -xvf ./datasets/groundtruth.tar -C ./datasets'
     print(cmd)
     os.system(cmd)
