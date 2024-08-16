@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison of Gaussian Splatting and Instant-NGP</title>
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 21px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: normal;
+            text-align: center;
+            width: 100%;
+            margin-top: -15px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>3D Reconstruction</h1>
+
+    <h2>Comparison of Instant-NeuS and NeuS2 on objects</h2>
+    <h3>We report the Chamfer distance &#215; 10<sup>&minus;2</sup>.</h3>
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2">Method</th>
+                <th colspan="7">Material Type</th>
+            </tr>
+            <tr>
+                <th>Conductor</th>
+                <th>Dielectric</th>
+                <th>Plastic</th>
+                <th>Rough Conductor</th>
+                <th>Rough Dielectric</th>
+                <th>Rough Plastic</th>
+                <th>Diffuse</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Instant-NeuS</td>
+                <td>1.2554</td>
+                <td>1.1912</td>
+                <td>0.7023</td>
+                <td>0.9824</td>
+                <td>1.1634</td>
+                <td>0.6417</td>
+                <td>0.6425</td>
+            </tr>
+            <tr>
+                <td>NeuS2</td>
+                <td>1.3016</td>
+                <td>1.2734</td>
+                <td>0.6823</td>
+                <td>1.0192</td>
+                <td>1.2553</td>
+                <td>0.6372</td>
+                <td>0.5998</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Comparison of Instant-NeuS and NeuS2 on sphere</h2>
+    <h3>We report the Chamfer distance &#215; 10<sup>&minus;2</sup>.</h3>
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2">Method</th>
+                <th colspan="7">Material Type</th>
+            </tr>
+            <tr>
+                <th>Conductor</th>
+                <th>Dielectric</th>
+                <th>Plastic</th>
+                <th>Rough Conductor</th>
+                <th>Rough Dielectric</th>
+                <th>Rough Plastic</th>
+                <th>Diffuse</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Instant-NeuS</td>
+                <td>3.0171</td>
+                <td>0.9070</td>
+                <td>0.2899</td>
+                <td>2.6718</td>
+                <td>0.1350</td>
+                <td>0.2048</td>
+                <td>0.1067</td>
+            </tr>
+            <tr>
+                <td>NeuS2</td>
+                <td>2.9231</td>
+                <td>0.1779</td>
+                <td>0.1185</td>
+                <td>2.2919</td>
+                <td>0.1384</td>
+                <td>0.1138</td>
+                <td>0.0994</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+
+
+</html>
