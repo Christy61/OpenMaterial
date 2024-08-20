@@ -8,6 +8,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 20px;
         }
 
         table {
@@ -21,220 +22,261 @@
             border: 1px solid #dddddd;
             text-align: center;
             padding: 5px;
-            font-size: 20px;
+            font-size: 16px;
         }
 
         th {
             background-color: #afafaf;
         }
 
-        caption {
-            font-size: 1.2em;
-            margin: 10px 0;
-        }
-
-        .double-line {
-            border-top: 3px solid #000;
-            border-bottom: 1px solid #000;
-        }
-
-        .green-check {
-            color: green;
-            font-weight: bold;
-        }
-
-        .red-cross {
-            color: red;
-            font-weight: bold;
-        }
-
-        .bold {
-            font-weight: bold;
-        }
-
         img {
-            max-width: 480px;
-            height: 360px;
+            width: 100%;
+            /* Ensures the image takes full width of the cell */
+            height: auto;
+            /* Maintains the aspect ratio */
+        }
+
+        .image-cell {
+            width: 60%;
+            /* Gives more space to the image cell */
+        }
+
+        .text-caption {
+            font-size: 16px;
+            /* Smaller font size for ID and material type */
+            color: #666;
+            /* Diminishes the color to make it less prominent */
+            display: block;
+            /* Ensures it displays as block to separate it visually */
+            font-weight: bold;
         }
     </style>
-    <script src="../js/preview.js"></script>
-    <script src="../js/index.js"></script>
 </head>
 
 <body>
 
-    <table id="myTable" class="table table-striped">
+    <table id="myTable">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Material</th>
+                <th>Image Preview</th>
             </tr>
         </thead>
-
         <tbody>
+            <!-- Repeating the following row as needed -->
             <tr>
-                <td>acff047a4aed49e29b6fb96f1b7f8428</td>
-                <td><img src="../images/preview/Conductor/acff047a4aed49e29b6fb96f1b7f8428/conductor-Cu-Zn/001.png"
-                        alt="Preview"></td>
-                <td>conductor-90%Cu-10%Zn</td>
-            </tr>
-            <tr>
-                <td>baaa545c02ff47aa937665a40cdf5e72</td>
-                <td><img src="../images/preview/Conductor/baaa545c02ff47aa937665a40cdf5e72/conductor-V-H/003.png"
-                        alt="Preview"></td>
-                <td>conductor-V-H</td>
-            </tr>
-            <tr>
-                <td>dd0106ed0d0c438cb776cccde5827093</td>
-                <td><img src="../images/preview/Conductor/dd0106ed0d0c438cb776cccde5827093/conductor-Ir/033.png"
-                        alt="Preview"></td>
-                <td>conductor-Ir</td>
-            </tr>
-            <tr>
-                <td>f8d0a261836f4c5ebc94dd40ef7eaef6</td>
-                <td><img src="../images/preview/Conductor/f8d0a261836f4c5ebc94dd40ef7eaef6/aerodynamics_workshop_4k-conductor-RefractiveIndex-Nb/007.png"
-                        alt="Preview"></td>
-                <td>conductor-Nb</td>
-            </tr>
-            <tr>
-                <td>fc4f34dae22c4dae95c19b1654c3cb7e</td>
-                <td><img src="../images/preview/Conductor/fc4f34dae22c4dae95c19b1654c3cb7e/conductor-Lu/033.png"
-                        alt="Preview"></td>
-                <td>conductor-Lu</td>
-            </tr>
-            <tr>
-                <td>1cbbb828ebae4d128cf86c78ac66e282</td>
-                <td><img src="../images/preview/RoughConductor/1cbbb828ebae4d128cf86c78ac66e282/roughconductor-Pd-H/000.png"
-                        alt="Preview"></td>
-                <td>roughconductor-Pd-H</td>
-            </tr>
-            <tr>
-                <td>fce412a0472d4e798ded2a13c0dbcd71</td>
-                <td><img src="../images/preview/RoughConductor/fce412a0472d4e798ded2a13c0dbcd71/roughconductor-Ta/033.png"
-                        alt="Preview"></td>
-                <td>roughconductor-Ta</td>
-            </tr>
-            <tr>
-                <td>ff82adacd27b423f9562c02fffc9f77c</td>
-                <td><img src="../images/preview/RoughConductor/ff82adacd27b423f9562c02fffc9f77c/roughconductor-none/040.png"
-                        alt="Preview"></td>
-                <td>roughconductor-mirror</td>
-            </tr>
-            <tr>
-                <td>a4b89600d647415484638efac71fc35f</td>
-                <td><img src="../images/preview/Dielectric/a4b89600d647415484638efac71fc35f/dielectric-RbI/001.png"
-                        alt="Preview"></td>
-                <td>dielectric-RbI</td>
-            </tr>
-            <tr>
-                <td>e7da6b09d300488e93fbe384412b8b18</td>
-                <td><img src="../images/preview/Dielectric/e7da6b09d300488e93fbe384412b8b18/dielectric-CsCl/033.png"
-                        alt="Preview"></td>
-                <td>dielectric-CsCl</td>
-            </tr>
-            <tr>
-                <td>f9a43f763cd84f6498749da43a235d56</td>
-                <td><img src="../images/preview/Dielectric/f9a43f763cd84f6498749da43a235d56/dielectric-SrF2/008.png"
-                        alt="Preview"></td>
-                <td>dielectric-SrF2</td>
-            </tr>
-            <tr>
-                <td>fc71df6bb1c34cbb93e16a1a81e8b0c8</td>
-                <td><img src="../images/preview/Dielectric/fc71df6bb1c34cbb93e16a1a81e8b0c8/dielectric-Y3Al5O12/034.png"
-                        alt="Preview"></td>
-                <td>dielectric-Y3Al5O12</td>
-            </tr>
-            <tr>
-                <td>fdc93f7871864de19c017a129827dedb</td>
-                <td><img src="../images/preview/Dielectric/fdc93f7871864de19c017a129827dedb/dielectric-RbCl/033.png"
-                        alt="Preview"></td>
-                <td>dielectric-RbCl</td>
-            </tr>
-            <tr>
-                <td>f7fadbe9533e472d8d8a7482052b4b59</td>
-                <td><img src="../images/preview/RoughDielectric/f7fadbe9533e472d8d8a7482052b4b59/roughdielectric-RbCl/035.png"
-                        alt="Preview"></td>
-                <td>roughdielectric-RbCl</td>
-            </tr>
-            <tr>
-                <td>fcf826b9f3784fb0aa878a79c9879053</td>
-                <td><img src="../images/preview/RoughDielectric/fcf826b9f3784fb0aa878a79c9879053/roughdielectric-MgO/004.png"
-                        alt="Preview"></td>
-                <td>roughdielectric-MgO</td>
-            </tr>
-            <tr>
-                <td>fe18e8e79237433888b30654df688ae1</td>
-                <td><img src="../images/preview/RoughDielectric/fe18e8e79237433888b30654df688ae1/roughdielectric-BaF2/033.png"
-                        alt="Preview"></td>
-                <td>roughdielectric-BaF2</td>
-            </tr>
-            <tr>
-                <td>383e1febaf6c41889a16e8fc06f0bec0</td>
-                <td><img src="../images/preview/Plastic/383e1febaf6c41889a16e8fc06f0bec0/plastic-polyvinil_chloride/040.png"
-                        alt="Preview"></td>
-                <td>plastic-polyvinil_chloride</td>
-            </tr>
-            <tr>
-                <td>50a9ee94b7a24ebcad75638705925a8c</td>
-                <td><img src="../images/preview/Plastic/50a9ee94b7a24ebcad75638705925a8c/plastic-polyetherimide/003.png"
-                        alt="Preview"></td>
-                <td>plastic-polyetherimide</td>
-            </tr>
-            <tr>
-                <td>74e181fdd13c4189b7c6ac6767fda2e0</td>
-                <td><img src="../images/preview/Plastic/74e181fdd13c4189b7c6ac6767fda2e0/plastic-Kapton/001.png"
-                        alt="Preview"></td>
-                <td>plastic-Kapton</td>
-            </tr>
-            <tr>
-                <td>a01f57189100463cbd9c75a127609e79</td>
-                <td><img src="../images/preview/Plastic/a01f57189100463cbd9c75a127609e79/plastic-polycarbonate/033.png"
-                        alt="Preview"></td>
-                <td>plastic-polycarbonate</td>
-            </tr>
-            <tr>
-                <td>fc202754fb744e0cbf4c6d748c100ee4</td>
-                <td><img src="../images/preview/Plastic/fc202754fb744e0cbf4c6d748c100ee4/plastic-Kapton/003.png"
-                        alt="Preview"></td>
-                <td>plastic-Kapton</td>
-            </tr>
-            <tr>
-                <td>01098ad7973647a9b558f41d2ebc5193</td>
-                <td><img src="../images/preview/RoughPlastic/01098ad7973647a9b558f41d2ebc5193/roughplastic-polyethylene_terephthalate/000.png"
-                        alt="Preview"></td>
-                <td>roughplastic-polyethylene_terephthalate</td>
-            </tr>
-            <tr>
-                <td>f0eb0077c8eb47de8d2501cae133fbc3</td>
-                <td><img src="../images/preview/RoughPlastic/f0eb0077c8eb47de8d2501cae133fbc3/roughplastic-Kapton/035.png"
-                        alt="Preview"></td>
-                <td>roughplastic-Kapton</td>
-            </tr>
-            <tr>
-                <td>ffe462ecf97e469da518ac60aa954815</td>
-                <td><img src="../images/preview/RoughPlastic/ffe462ecf97e469da518ac60aa954815/roughplastic-EVASKY_S88/037.png"
-                        alt="Preview"></td>
-                <td>roughplastic-EVASKY_S88</td>
-            </tr>
-            <tr>
-                <td>799f68068fcf4cd6a12713d6e6a29e0b</td>
-                <td><img src="../images/preview/Diffuse/799f68068fcf4cd6a12713d6e6a29e0b/diffuse/000.png" alt="Preview">
+                <td class="image-cell">
+                    <span class="text-caption">ID:fc4f34dae22c4dae95c19b1654c3cb7e</span>
+                    <span class="text-caption">Material: conductor-Lu</span>
+                    <img src="../images/preview/Conductor/fc4f34dae22c4dae95c19b1654c3cb7e/conductor-Lu/033.png"
+                        alt="Preview">
                 </td>
-                <td>diffuse</td>
             </tr>
             <tr>
-                <td>fe0ea2cee119476fb1a7524d5ff380dc</td>
-                <td><img src="../images/preview/Diffuse/fe0ea2cee119476fb1a7524d5ff380dc/diffuse/001.png" alt="Preview">
+                <td class="image-cell">
+                    <span class="text-caption">ID:acff047a4aed49e29b6fb96f1b7f8428</span>
+                    <span class="text-caption">Material: conductor-90%Cu-10%Zn</span>
+                    <img src="../images/preview/Conductor/acff047a4aed49e29b6fb96f1b7f8428/conductor-Cu-Zn/001.png"
+                        alt="Preview">
                 </td>
-                <td>diffuse</td>
             </tr>
             <tr>
-                <td>fef3a2f2904249c0bc53faa84f95355b</td>
-                <td><img src="../images/preview/Diffuse/fef3a2f2904249c0bc53faa84f95355b/diffuse/003.png" alt="Preview">
+                <td class="image-cell">
+                    <span class="text-caption">ID:baaa545c02ff47aa937665a40cdf5e72</span>
+                    <span class="text-caption">Material: conductor-V-H</span>
+                    <img src="../images/preview/Conductor/baaa545c02ff47aa937665a40cdf5e72/conductor-V-H/003.png"
+                        alt="Preview">
                 </td>
-                <td>diffuse</td>
             </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:dd0106ed0d0c438cb776cccde5827093</span>
+                    <span class="text-caption">Material: conductor-Ir</span>
+                    <img src="../images/preview/Conductor/dd0106ed0d0c438cb776cccde5827093/conductor-Ir/033.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:8d0a261836f4c5ebc94dd40ef7eaef6</span>
+                    <span class="text-caption">Material: conductor-Nb</span>
+                    <img src="../images/preview/Conductor/f8d0a261836f4c5ebc94dd40ef7eaef6/aerodynamics_workshop_4k-conductor-RefractiveIndex-Nb/007.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:1cbbb828ebae4d128cf86c78ac66e282</span>
+                    <span class="text-caption">Material: roughconductor-Pd-H</span>
+                    <img src="../images/preview/RoughConductor/1cbbb828ebae4d128cf86c78ac66e282/roughconductor-Pd-H/000.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:fce412a0472d4e798ded2a13c0dbcd71</span>
+                    <span class="text-caption">Material: roughconductor-Ta</span>
+                    <img src="../images/preview/RoughConductor/fce412a0472d4e798ded2a13c0dbcd71/roughconductor-Ta/033.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:ff82adacd27b423f9562c02fffc9f77c</span>
+                    <span class="text-caption">Material: roughconductor-mirror</span>
+                    <img src="../images/preview/RoughConductor/ff82adacd27b423f9562c02fffc9f77c/roughconductor-none/040.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:a4b89600d647415484638efac71fc35f</span>
+                    <span class="text-caption">Material: dielectric-RbI</span>
+                    <img src="../images/preview/Dielectric/a4b89600d647415484638efac71fc35f/dielectric-RbI/001.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:e7da6b09d300488e93fbe384412b8b18</span>
+                    <span class="text-caption">Material: dielectric-CsCl</span>
+                    <img src="../images/preview/Dielectric/e7da6b09d300488e93fbe384412b8b18/dielectric-CsCl/033.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:f9a43f763cd84f6498749da43a235d56</span>
+                    <span class="text-caption">Material: dielectric-SrF2</span>
+                    <img src="../images/preview/Dielectric/f9a43f763cd84f6498749da43a235d56/dielectric-SrF2/008.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:fc71df6bb1c34cbb93e16a1a81e8b0c8</span>
+                    <span class="text-caption">Material: dielectric-Y3Al5O12</span>
+                    <img src="../images/preview/Dielectric/fc71df6bb1c34cbb93e16a1a81e8b0c8/dielectric-Y3Al5O12/034.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:fdc93f7871864de19c017a129827dedb</span>
+                    <span class="text-caption">Material: dielectric-RbCl</span>
+                    <img src="../images/preview/Dielectric/fdc93f7871864de19c017a129827dedb/dielectric-RbCl/033.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:f7fadbe9533e472d8d8a7482052b4b59</span>
+                    <span class="text-caption">Material: roughdielectric-RbCl</span>
+                    <img src="../images/preview/RoughDielectric/f7fadbe9533e472d8d8a7482052b4b59/roughdielectric-RbCl/035.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <!-- <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:fcf826b9f3784fb0aa878a79c9879053</span>
+                    <span class="text-caption">Material: roughdielectric-MgO</span>
+                    <img src="../images/preview/RoughDielectric/fcf826b9f3784fb0aa878a79c9879053/roughdielectric-MgO/004.png" alt="Preview">
+                </td>
+            </tr> -->
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:fe18e8e79237433888b30654df688ae1</span>
+                    <span class="text-caption">Material: roughdielectric-BaF2</span>
+                    <img src="../images/preview/RoughDielectric/fe18e8e79237433888b30654df688ae1/roughdielectric-BaF2/033.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:383e1febaf6c41889a16e8fc06f0bec0</span>
+                    <span class="text-caption">Material: plastic-polyvinil_chloride</span>
+                    <img src="../images/preview/Plastic/383e1febaf6c41889a16e8fc06f0bec0/plastic-polyvinil_chloride/040.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:50a9ee94b7a24ebcad75638705925a8c</span>
+                    <span class="text-caption">Material: plastic-polyetherimide</span>
+                    <img src="../images/preview/Plastic/50a9ee94b7a24ebcad75638705925a8c/plastic-polyetherimide/003.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:74e181fdd13c4189b7c6ac6767fda2e0</span>
+                    <span class="text-caption">Material: plastic-Kapton</span>
+                    <img src="../images/preview/Plastic/74e181fdd13c4189b7c6ac6767fda2e0/plastic-Kapton/001.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:a01f57189100463cbd9c75a127609e79</span>
+                    <span class="text-caption">Material: plastic-polycarbonate</span>
+                    <img src="../images/preview/Plastic/a01f57189100463cbd9c75a127609e79/plastic-polycarbonate/033.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:fc202754fb744e0cbf4c6d748c100ee4</span>
+                    <span class="text-caption">Material: plastic-Kapton</span>
+                    <img src="../images/preview/Plastic/fc202754fb744e0cbf4c6d748c100ee4/plastic-Kapton/003.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:01098ad7973647a9b558f41d2ebc5193</span>
+                    <span class="text-caption">Material: roughplastic-polyethylene_terephthalate</span>
+                    <img src="../images/preview/RoughPlastic/01098ad7973647a9b558f41d2ebc5193/roughplastic-polyethylene_terephthalate/000.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <!-- <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:f0eb0077c8eb47de8d2501cae133fbc3</span>
+                    <span class="text-caption">Material: roughplastic-Kapton</span>
+                    <img src="../images/preview/RoughPlastic/f0eb0077c8eb47de8d2501cae133fbc3/roughplastic-Kapton/035.png" alt="Preview">
+                </td>
+            </tr> -->
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:ffe462ecf97e469da518ac60aa954815</span>
+                    <span class="text-caption">Material: roughplastic-EVASKY_S88</span>
+                    <img src="../images/preview/RoughPlastic/ffe462ecf97e469da518ac60aa954815/roughplastic-EVASKY_S88/037.png"
+                        alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:799f68068fcf4cd6a12713d6e6a29e0b</span>
+                    <span class="text-caption">Material: diffuse</span>
+                    <img src="../images/preview/Diffuse/799f68068fcf4cd6a12713d6e6a29e0b/diffuse/000.png" alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:fe0ea2cee119476fb1a7524d5ff380dc</span>
+                    <span class="text-caption">Material: diffuse</span>
+                    <img src="../images/preview/Diffuse/fe0ea2cee119476fb1a7524d5ff380dc/diffuse/001.png" alt="Preview">
+                </td>
+            </tr>
+            <tr>
+                <td class="image-cell">
+                    <span class="text-caption">ID:fef3a2f2904249c0bc53faa84f95355b</span>
+                    <span class="text-caption">Material: diffuse</span>
+                    <img src="../images/preview/Diffuse/fef3a2f2904249c0bc53faa84f95355b/diffuse/003.png" alt="Preview">
+                </td>
+            </tr>
+
+
+            <!-- More rows... -->
         </tbody>
     </table>
 

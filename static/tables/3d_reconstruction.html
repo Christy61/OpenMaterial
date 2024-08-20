@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Shape Reconstruction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+        }
+        th {
+            background-color: #afafaf;
+        }
+        caption {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption><strong>3D Shape Reconstruction</strong><br>We report the Chamfer distance &#215; 10<sup>-2</sup>.</caption>
+        <thead>
+            <tr>
+                <th rowspan="2">Method</th>
+                <th colspan="7">Material Type</th>
+            </tr>
+            <tr>
+                <th>Conductor</th>
+                <th>Dielectric</th>
+                <th>Plastic</th>
+                <th>Rough Conductor</th>
+                <th>Rough Dielectric</th>
+                <th>Rough Plastic</th>
+                <th>Diffuse</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Instant-NeuS</td>
+                <td>1.2554</td>
+                <td>1.1912</td>
+                <td>0.7023</td>
+                <td>0.9824</td>
+                <td>1.1634</td>
+                <td>0.6417</td>
+                <td>0.6425</td>
+            </tr>
+            <tr>
+                <td>NeuS2</td>
+                <td>1.3016</td>
+                <td>1.2734</td>
+                <td>0.6823</td>
+                <td>1.0192</td>
+                <td>1.2553</td>
+                <td>0.6372</td>
+                <td>0.5998</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

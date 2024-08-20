@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novel View Synthesis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+        }
+        th {
+            background-color: #afafaf;
+        }
+        caption {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption><strong>Novel View Synthesis</strong></caption>
+        <thead>
+            <tr>
+                <th rowspan="2">Metric</th>
+                <th rowspan="2">Method</th>
+                <th colspan="7">Material Type</th>
+            </tr>
+            <tr>
+                <th>Conductor</th>
+                <th>Dielectric</th>
+                <th>Plastic</th>
+                <th>Rough Conductor</th>
+                <th>Rough Dielectric</th>
+                <th>Rough Plastic</th>
+                <th>Diffuse</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2">PSNR↑</td>
+                <td>Gaussian Splatting</td>
+                <td>22.8174</td>
+                <td>23.2858</td>
+                <td>36.2718</td>
+                <td>30.8321</td>
+                <td>30.7457</td>
+                <td>39.3673</td>
+                <td>41.0518</td>
+            </tr>
+            <tr>
+                <td>Instant-NGP</td>
+                <td>22.8916</td>
+                <td>24.5728</td>
+                <td>36.0873</td>
+                <td>31.0682</td>
+                <td>32.3506</td>
+                <td>38.5815</td>
+                <td>39.5141</td>
+            </tr>
+            <tr>
+                <td rowspan="2">SSIM↑</td>
+                <td>Gaussian Splatting</td>
+                <td>0.8500</td>
+                <td>0.8255</td>
+                <td>0.9703</td>
+                <td>0.9459</td>
+                <td>0.9408</td>
+                <td>0.9819</td>
+                <td>0.9865</td>
+            </tr>
+            <tr>
+                <td>Instant-NGP</td>
+                <td>0.8481</td>
+                <td>0.8473</td>
+                <td>0.9763</td>
+                <td>0.9526</td>
+                <td>0.9591</td>
+                <td>0.9880</td>
+                <td>0.9911</td>
+            </tr>
+            <tr>
+                <td rowspan="2">LPIPS↓</td>
+                <td>Gaussian Splatting</td>
+                <td>0.1152</td>
+                <td>0.1261</td>
+                <td>0.0386</td>
+                <td>0.0530</td>
+                <td>0.0696</td>
+                <td>0.0204</td>
+                <td>0.0152</td>
+            </tr>
+            <tr>
+                <td>Instant-NGP</td>
+                <td>0.1523</td>
+                <td>0.1464</td>
+                <td>0.0591</td>
+                <td>0.0848</td>
+                <td>0.0910</td>
+                <td>0.0382</td>
+                <td>0.0242</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
