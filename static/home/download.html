@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Shape Reconstruction</title>
+    <style>
+        html,
+        body {
+            font-family: Arial, sans-serif;
+            overflow: visible;
+        }
+
+        .section {
+            width: 100%;
+            height: fit-content;
+            overflow: visible;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            margin-top: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .container-tex {
+            width: 90%;
+            margin: 10px auto;
+            justify-content: center;
+            text-align: left;
+        }
+
+        a {
+            color: #1154a0;
+            font-weight: normal;
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: #1154a0;
+        }
+
+        a:hover {
+            color: darkblue;
+        }
+
+        a:active {
+            color: red;
+        }
+
+        p {
+            width: 90%;
+            margin: 10px auto;
+            justify-content: center;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="section">
+        <p class="section-title">Download main dataset</p>
+        <p>
+            Our dataset contains 1001 object centered scenes. To eliminate scale bias, we standardize object sizes
+            within a unit sphere. This lets us sample camera
+            positions using a Fibonacci grid on the upper hemisphere, ensuring uniform distribution and non-overlapping
+            coverage. We then splits these camera positions into distinct training (50) and testing (40) viewpoints.
+            All high-resolution images (1600x1200 pixels), rendered using Mitsuba, along with
+            associated data including camera positions, depth, 3D object models, and object masks, are stored in the
+            standard Blender format, with support for conversion to the COLMAP format, facilitating usability across the
+            research community. You can directly download main dataset <a
+                href="https://huggingface.co/datasets/EPFL-CVLab/OpenMaterial/" target="_blank">here</a>. Furthermore,
+            we strongly recommend that you use <a
+                href="https://github.com/Christy61/OpenMaterial/blob/master/download.py" target="_blank">our
+                script</a> to download different parts of the dataset.(Please refer to the file <a
+                href="https://github.com/Christy61/OpenMaterial/blob/master/README.md" target="_blank">README.md</a> for
+            more information.)
+        </p>
+        <p class="section-title">Optional depth data</p>
+        <p>
+            Researchers may need to use depth maps for supervision or evaluation. We provide high-precision depth
+            metadata instead of depth maps as optional downloadable items. You can download them on <a
+                href="https://huggingface.co/datasets/EPFL-CVLab/OpenMaterial/" target="_blank">huggingface</a>.
+            Also, you can use <a href="https://github.com/Christy61/OpenMaterial/blob/master/download.py"
+                target="_blank">our
+                script</a> with the depth parameter.
+        </p>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Shape Reconstruction</title>
+    <style>
+        html,
+        body {
+            font-family: Arial, sans-serif;
+            overflow: visible;
+        }
+
+        .section {
+            width: 100%;
+            height: fit-content;
+            overflow: visible;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            margin-top: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .container-tex {
+            width: 90%;
+            margin: 10px auto;
+            justify-content: center;
+            text-align: left;
+        }
+
+        a {
+            color: #1154a0;
+            font-weight: normal;
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: #1154a0;
+        }
+
+        a:hover {
+            color: darkblue;
+        }
+
+        a:active {
+            color: red;
+        }
+
+        p {
+            width: 90%;
+            margin: 10px auto;
+            justify-content: center;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="section">
+        <p class="section-title">Introduction</p>
+        <p>
+            Accurately reconstructing objects with complex optical properties, such as metals and glass, remains a
+            formidable challenge due to their unique specular and light-transmission characteristics. To facilitate
+            the
+            development of solutions to these challenges, we introduce the OpenMaterial dataset, comprising 1001
+            objects
+            made of 295 distinct materials—including conductors, dielectrics, plastics, and their roughened
+            variants—
+            and captured under 723 diverse lighting conditions.
+        </p>
+        <img src="../images/teaser.png" style="width:50%; margin-left:auto; margin-right:auto; display:block">
+        <p class="section-title">Evaluation</p>
+        <p>
+            <b>Benchmark Novel view synthesize</b>: We utilize the same quantitative metrics on the test as previous
+            novel view
+            synthesis works to evaluate the rendered 2D image quality: PSNR, SSIM, and LPIPS.
+        </p>
+        <p>
+            <b>Benchmark 3d reconstruction</b>: We use Chamfer distance to evaluate the quality of the reconstructed
+            mesh.
+            The groundtruth mesh retains faces that are similar to the 3D points visible from all
+            viewpoints. You can click <a
+                href="https://huggingface.co/datasets/EPFL-CVLab/OpenMaterial/blob/main/groundtruth.tar"
+                target="_blank">here</a> to download them.
+        </p>
+        <p>
+            Before evaluating the estimated mesh, a preprocessing step isolates its visible part. Here, we
+            follow the approach of NeuS. You can use <a
+                href="https://github.com/Christy61/OpenMaterial/blob/master/Openmaterial-main/eval/clean_mesh.py"
+                target="_blank">our script</a> for preprocessing. Compared to the script provided by
+            <a href="https://github.com/xxlong0/SparseNeuS/blob/main/evaluation/clean_mesh.py" target="_blank">NeuS</a>,
+            we have removed all faces below the lowest plane using groundtruth mesh.
+            After isolating the visible part of the estimated mesh, a detailed quantitative
+            analysis is conducted. This involves the uniform sampling of one million points from both the ground
+            truth and the estimated meshes, followed by computing the Chamfer distance between these two point sets to
+            quantify discrepancies.(see our <a href="https://github.com/Christy61/OpenMaterial"
+                target="_blank">repository</a> for more information.)
+        </p>
+        <p class="section-title">Citation</p>
+        <p>
+            Dang, Zheng, et al. "OpenMaterial: A Comprehensive Dataset of Complex Materials for 3D Reconstruction."
+            arXiv preprint arXiv:2406.08894 (2024).
+        </p>
+        <p class="section-title">Contact</p>
+        <p>
+            <a href="mailto:zheng.dang@epfl.ch">zheng.dang@epfl.ch</a>
+        </p>
+    </section>
+</body>
+
+</html>

@@ -34,290 +34,200 @@
 </head>
 
 <body>
+  <div class="container-body">
+    <section class="header">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-3 publication-title">OpenMaterial: A Comprehensive Dataset of Complex Materials for 3D
+                Reconstruction</h1>
+              <!-- <hr> -->
+              <!-- <div class="is-size-5 author-info">
+                <span class="author-block">
+                  <a href="https://people.epfl.ch/zheng.dang" class="black-link">Zheng
+                    Dang</a><sup>1</sup></span>&nbsp;&nbsp;
+                <span class="author-block">
+                  Jialu Huang<sup>2</sup></span>&nbsp;&nbsp;
+                <span class="author-block">
+                  Fei Wang<sup>2</sup>&nbsp;&nbsp;
+                </span>
+                <span class="author-block">
+                  <a href="https://people.epfl.ch/mathieu.salzmann" class="black-link">Mathieu Salzmann</a><sup>1</sup>
+                </span>
+              </div> -->
 
-  <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-    <div class="navbar-menu">
-      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-        <a class="navbar-item" href="https://keunhong.com">
-          <span class="icon">
-            <i class="fas fa-home"></i>
-          </span>
-        </a>
-
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            More Research
-          </a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="https://hypernerf.github.io">
-              HyperNeRF
-            </a>
-            <a class="navbar-item" href="https://nerfies.github.io">
-              Nerfies
-            </a>
-            <a class="navbar-item" href="https://latentfusion.github.io">
-              LatentFusion
-            </a>
-            <a class="navbar-item" href="https://photoshape.github.io">
-              PhotoShape
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </nav> -->
-
-  <section class="header">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">OpenMaterial: A Comprehensive Dataset of Complex Materials for 3D
-              Reconstruction</h1>
-            <hr>
-            <div class="is-size-4 author-info">
-              <span class="author-block">
-                <a href="https://people.epfl.ch/zheng.dang" class="black-link">Zheng
-                  Dang</a><sup>1</sup></span>&nbsp;&nbsp;
-              <span class="author-block">
-                Jialu Huang<sup>2</sup></span>&nbsp;&nbsp;
-              <span class="author-block">
-                Fei Wang<sup>2</sup>&nbsp;&nbsp;
-              </span>
-              <span class="author-block">
-                <a href="https://people.epfl.ch/mathieu.salzmann" class="black-link">Mathieu Salzmann</a><sup>1</sup>
-              </span>
-            </div>
-
-            <!-- <div class="is-size-5 author-info">
+              <!-- <div class="is-size-5 author-info">
               <span class="author-block"><sup>1</sup>CVLab, EPFL, Switzerland</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <span class="author-block"><sup>2</sup>Xi'an Jiaotong University, China</span>
             </div> -->
 
-            <div class="is-size-5 author-info">
-              <sup>1</sup> <a href="https://www.epfl.ch/"><img
-                  style="height: 65px; padding-top: 18px; padding-bottom: 3pt;" src="static/images/logo/epfl-logo.svg">
-              </a>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <sup>2</sup> <a href="http://www.xjtu.edu.cn/"><img
-                  style="height: 65px; padding-top: 12px; padding-bottom: -4pt;" src="static/images/logo/logo-xjtu.png">
-              </a>
-            </div>
+              <!-- <div class="is-size-5 author-info">
+                <sup>1</sup> <a href="https://www.epfl.ch/"><img
+                    style="height: 65px; padding-top: 18px; padding-bottom: 3pt;"
+                    src="static/images/logo/epfl-logo.svg">
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <sup>2</sup> <a href="http://www.xjtu.edu.cn/"><img
+                    style="height: 65px; padding-top: 12px; padding-bottom: -4pt;"
+                    src="static/images/logo/logo-xjtu.png">
+                </a>
+              </div> -->
 
-            <div class="column has-text-centered">
-              <div class="publication-links">
-                <span class="link-block">
-                  <!-- <a href="https://arxiv.org/abs/2011.12948" class="external-link button is-normal is-rounded is-dark"> -->
-                  <a href="https://arxiv.org/abs/2406.08894" class="external-link button is-large is-rounded is-dark">
-                    <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                    </span>
-                    <span>Paper</span>
-                  </a>
-                </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <!-- Video Link. -->
-                <!-- <span class="link-block"> -->
-                <!-- <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
-                    class="external-link button is-normal is-rounded is-dark"> -->
-                <!-- <a href="https://www.youtube.com" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                    </span>
-                    <span>Video</span>
-                  </a>
-                </span> -->
-                <!-- Code Link. -->
-                <span class="link-block">
-                  <!-- <a href="https://github.com/google/nerfies" class="external-link button is-normal is-rounded is-dark"> -->
-                  <a href="https://github.com/Christy61/OpenMaterial"
-                    class="external-link button is-large is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <!-- Dataset Link. -->
-                <span class="link-block">
-                  <a href="https://huggingface.co/datasets/EPFL-CVLab/OpenMaterial"
-                    class="external-link button is-large is-rounded is-dark">
-                    <span class="icon">
-                      <i class="far fa-images"></i>
-                    </span>
-                    <span>Dataset</span>
-                  </a>
-              </div>
+              <!-- <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="https://arxiv.org/abs/2406.08894" class="external-link button is-large is-rounded is-dark">
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
+                  </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+              <!-- Code Link. -->
+              <!-- <span class="link-block">
+                    <a href="https://github.com/Christy61/OpenMaterial"
+                      class="external-link button is-large is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                    <a href="https://huggingface.co/datasets/EPFL-CVLab/OpenMaterial"
+                      class="external-link button is-large is-rounded is-dark">
+                      <span class="icon">
+                        <i class="far fa-images"></i>
+                      </span>
+                      <span>Dataset</span>
+                    </a>
+                </div> -->
 
+              <!-- </div> -->
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="hero teaser">
-    <div class="container is-full">
-      <div class="hero-body">
-        <img src="./static/images/teaser.png" style="width:75%; margin-left:auto; margin-right:auto; display:block">
-        <div class="container is-max-desktop">
-          <h2 class="subtitle is-max-desktop">
-            <br>
-            <b>Distinct materials.</b> From left to right: conductor, dielectric, plastic and diffuse. The top portion
-            of the vase shows rough surface finishes, while the bottom one shows smooth surface finishes.
-            <!-- <span class="dnerf"><b>OpenMaterial</b></span> Qualitative result of the material result. -->
-          </h2>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-max-desktop">
-          <h2 class="title is-3">Abstract</h2>
-          <div class="content has-text-justified">
-            <p>
-              Recent advances in deep learning such as neural radiance fields and implicit neural representations have
-              significantly propelled the field of 3D reconstruction. However, accurately reconstructing objects with
-              <b>complex optical properties</b>, such as metals and glass, remains a formidable challenge due to their
-              unique specular and light-transmission characteristics. To facilitate the development of solutions to
-              these
-              challenges, we introduce the OpenMaterial dataset, comprising 1001 objects made of 295 distinct
-              materials—including <b>conductors</b>, <b>dielectrics</b>, <b>plastics</b>, <b>and their roughened
-                variants</b>— and captured
-              under 723 diverse lighting conditions.
-            </p>
-            <p>
-              To this end, we utilized <b>physics-based rendering with laboratory-measured Indices of
-                Refraction(IOR)</b> and
-              generated high-fidelity multiview images that closely replicate real-world objects. OpenMaterial provides
-              comprehensive annotations, including 3D shape, material type, camera pose, depth, and object mask.
-            </p>
-            <p>
-              It stands as the first <b>large-scale</b> dataset enabling quantitative evaluations of existing
-              algorithms on objects with diverse and challenging materials, thereby paving the way for the development
-              of 3D reconstruction algorithms capable of <b>handling complex material properties</b>.
-            </p>
+    <!-- <section class="hero teaser">
+      <div class="container is-full">
+        <div class="hero-body">
+          <img src="./static/images/teaser.png" style="width:75%; margin-left:auto; margin-right:auto; display:block">
+          <div class="container is-max-desktop">
+            <h2 class="subtitle is-max-desktop">
+              <br>
+              <b>Distinct materials.</b> From left to right: conductor, dielectric, plastic and diffuse. The top portion
+              of the vase shows rough surface finishes, while the bottom one shows smooth surface finishes.
+            </h2>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section> -->
 
-  <!-- <section class="hero is-light is-small">
-    <div class="hero-body">
-      <div class="container">
-        <div id="results-carousel" class="carousel results-carousel">
-          <div class="item item-steve">
-            <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/steve.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-chair-tp">
-            <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/chair-tp.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-shiba">
-            <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/shiba.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-fullbody">
-            <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/fullbody.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-blueshirt">
-            <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/blueshirt.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-mask">
-            <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/mask.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-coffee">
-            <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/coffee.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-toby">
-            <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/toby2.mp4" type="video/mp4">
-            </video>
+    <!-- <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-max-desktop">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Recent advances in deep learning such as neural radiance fields and implicit neural representations have
+                significantly propelled the field of 3D reconstruction. However, accurately reconstructing objects with
+                <b>complex optical properties</b>, such as metals and glass, remains a formidable challenge due to their
+                unique specular and light-transmission characteristics. To facilitate the development of solutions to
+                these
+                challenges, we introduce the OpenMaterial dataset, comprising 1001 objects made of 295 distinct
+                materials—including <b>conductors</b>, <b>dielectrics</b>, <b>plastics</b>, <b>and their roughened
+                  variants</b>— and captured
+                under 723 diverse lighting conditions.
+              </p>
+              <p>
+                To this end, we utilized <b>physics-based rendering with laboratory-measured Indices of
+                  Refraction(IOR)</b> and
+                generated high-fidelity multiview images that closely replicate real-world objects. OpenMaterial
+                provides
+                comprehensive annotations, including 3D shape, material type, camera pose, depth, and object mask.
+              </p>
+              <p>
+                It stands as the first <b>large-scale</b> dataset enabling quantitative evaluations of existing
+                algorithms on objects with diverse and challenging materials, thereby paving the way for the development
+                of 3D reconstruction algorithms capable of <b>handling complex material properties</b>.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section> -->
+    </section> -->
 
-  <section class="section">
-    <div class="container-b">
-      <div class="button-container">
-        <div class="button-card" onclick="showContent('Preview')">
-          <div class="title-b">Preview</div>
-        </div>
-        <!-- <div class="button-card" onclick="showContent('Statistics-and-Distribution')">
+    <section class="section">
+      <div class="container-b">
+        <div class="button-container">
+          <div class="button-card" onclick="showContent('Home')">
+            <div class="title-b">Home</div>
+          </div>
+          <div class="button-card" onclick="showContent('Preview')">
+            <div class="title-b">Preview</div>
+          </div>
+          <!-- <div class="button-card" onclick="showContent('Statistics-and-Distribution')">
           <div class="title-b">Statistics and Distribution</div>
-        </div> -->
-        <div class="button-card" onclick="showContent('Benchmark-Board')">
-          <div class="title-b">Benchmark Board</div>
+          </div> -->
+          <div class="button-card" onclick="showContent('Download')">
+            <div class="title-b">Download</div>
+          </div>
+          <div class="button-card" onclick="showContent('Benchmark-Board')">
+            <div class="title-b">Benchmark Board</div>
+          </div>
+          <div class="button-card" onclick="showContent('Visualization')">
+            <div class="title-b">Visualization</div>
+          </div>
         </div>
-        <div class="button-card" onclick="showContent('Novel-View-Synthesis')">
-          <div class="title-b">Novel View Synthesis</div>
-        </div>
-        <div class="button-card" onclick="showContent('3D-Shape-Reconstruction')">
-          <div class="title-b">3D Shape Reconstruction</div>
-        </div>
-      </div>
 
-      <div class="content-container" id="content-Preview">
-        <br>
-        <iframe src="./static/tables/preview.html" width="100%" height="1030" style="border:none;"></iframe>
-        <br>
-      </div>
-      <!-- <div class="content-container" id="content-Statistics-and-Distribution">
+        <div class="content-container" id="content-Home">
+          <iframe src="./static/home/home.html" width="100%" height="850" style="border:none;"></iframe>
+          <br>
+        </div>
+
+        <div class="content-container" id="content-Preview">
+          <iframe src="./static/tables/preview.html" width="100%" height="2000" style="border:none;"></iframe>
+          <br>
+        </div>
+        <div class="content-container" id="content-Download">
+          <iframe src="./static/home/download.html" width="100%" height="550" style="border:none;"></iframe>
+          <br>
+        </div>
+        <!-- <div class="content-container" id="content-Statistics-and-Distribution">
         <br>
         <iframe src="./static/tables/table.html" width="100%" height="1030" style="border:none;"></iframe>
         <br>
       </div> -->
-      <div class="content-container" id="content-Benchmark-Board">
-        <br>
-        <iframe src="./static/tables/novel_view_synthesize.html" width="100%" height="400"
-          style="border:none;"></iframe>
-        <iframe src="./static/tables/3d_reconstruction.html" width="100%" height="330" style="border:none;"></iframe>
-        <br>
+        <div class="content-container" id="content-Benchmark-Board">
+          <br>
+          <iframe src="./static/tables/scoreboard-nerf.html" width="100%" height="720" style="border:none;"></iframe>
+          <iframe src="./static/tables/scoreboard-neus.html" width="100%" height="500" style="border:none;"></iframe>
+          <br>
+        </div>
+        <div class="content-container" id="content-Visualization">
+          <br>
+          <iframe src="./static/images/comparison-nerf-a.html" width="100%" height="1550" style="border:none;"></iframe>
+          <br>
+          <iframe src="./static/images/comparison-neus.html" width="100%" height="1700" style="border:none;"></iframe>
+          <br>
+        </div>
       </div>
-      <div class="content-container" id="content-Novel-View-Synthesis">
-        <br>
-        <iframe src="./static/images/comparison-nerf-a.html" width="100%" height="1710" style="border:none;"></iframe>
-      </div>
-      <div class="content-container" id="content-3D-Shape-Reconstruction">
-        <br>
-        <iframe src="./static/images/comparison-neus.html" width="100%" height="1800" style="border:none;"></iframe>
-        <br>
-      </div>
-    </div>
-  </section>
+    </section>
+
+  </div>
 
   <footer class="footer">
     <div class="container">
       <div class="content has-text-centered">
-        <a class="icon-link" href="https://arxiv.org/">
+        <a class="icon-link" href="https://arxiv.org/abs/2406.08894">
           <i class="fas fa-file-pdf"></i>
         </a>
-        <a class="icon-link" href="https://github.com/" class="external-link" disabled>
+        <a class="icon-link" href="https://github.com/Christy61/OpenMaterial" class="external-link" disabled>
           <i class="fab fa-github"></i>
         </a>
       </div>

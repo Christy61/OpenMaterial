@@ -1,5 +1,5 @@
 function showContent(section) {
-    const sections = ['Preview', 'Benchmark-Board', 'Novel-View-Synthesis', '3D-Shape-Reconstruction'];
+    const sections = ['Home', 'Preview', 'Download', 'Benchmark-Board', 'Visualization'];
     sections.forEach(sec => {
         document.getElementById(`content-${sec}`).classList.remove('visible');
         document.querySelector(`.button-card[onclick="showContent('${sec}')"]`).classList.remove('active');
@@ -9,5 +9,5 @@ function showContent(section) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    showContent('Preview');
+    showContent('Home');
 });

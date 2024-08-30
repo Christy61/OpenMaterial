@@ -1,6 +1,6 @@
 .header {
-  background-color: #ebf0f1;
-  padding: 20px;
+  background-color: #fff;
+  padding: 0px;
   text-align: center;
 }
 
@@ -23,31 +23,34 @@ hr {
 
 .button-container {
   display: flex;
-  justify-content: space-around;
-  gap: 20px;
-  margin-bottom: 20px;
+  justify-content: center;
+  gap: 0px;
+  margin-bottom: 0px;
+  margin-bottom: 0px;
+  background-color: #2c2c2c;
+  padding: 0px;
 }
 
 .button-card {
   background-color: #2c2c2c;
   color: #fff;
-  border-radius: 22px;
+  border-radius: 0px;
   text-align: center;
-  padding: 20px;
+  padding: 14px 9px;
   text-decoration: none;
-  width: 190px;
-  height: 110px;
+  width: auto;
+  height: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, background-color 0.2s ease, width 0.2s;
+  box-shadow: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
   cursor: pointer;
 }
 
 .button-card:hover {
-  transform: translateY(-3px);
+  /* transform: translateY(-3px); */
   background-color: #444;
 }
 
@@ -58,24 +61,37 @@ hr {
 }
 
 .button-card .title-b {
-  font-size: 18px;
-  font-weight: 620;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 600;
+  margin: 0 10px;
 }
 
 .button-card.active {
-  transform: scale(1.25);
-  width: 170px;
+  transform: scale(1);
+  background-color: #eee;
+  width: auto;
+}
+
+.button-card.active .title-b {
+  font-size: 14px;
+  color: #2c2c2c;
+  font-weight: 600;
+  margin: 0 10px;
 }
 
 .content-container {
   display: none;
   text-align: center;
   width: 100%;
-  padding: 10px;
-  border: 2px solid #444;
-  border-radius: 10px;
-  background-color: #f0f0f0;
-  margin-top: 20px;
+  height: fit-content;
+  padding: 0;
+  /* border: 2px solid #444;
+  border-radius: 10px; */
+  background-color: #fff;
+  margin-top: 0;
+  overflow: visible;
+  max-height: none;
 }
 
 .visible {
@@ -84,11 +100,16 @@ hr {
 
 .container-b {
   text-align: center;
-  margin: 30px auto;
+  margin: 0px auto;
   width: 100%;
-  max-width: 1200px;
-  padding: 20px;
-  border: 2px solid #000;
-  border-radius: 10px;
+  max-width: 1023px;
   background-color: #fff;
+  overflow: visible;
+}
+
+.container-body {
+  padding: 0px;
+  max-width: 1023px;
+  margin: auto;
+  background: #fff;
 }

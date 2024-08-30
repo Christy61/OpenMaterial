@@ -1,11 +1,9 @@
-/* 全局样式重置 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* 顶部标题样式 */
 .top-title {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -17,7 +15,6 @@
     font-size: 1.5rem;
 }
 
-/* 主容器样式 */
 .mainSection {
     display: flex;
     flex-direction: column;
@@ -26,7 +23,6 @@
     width: 100%;
 }
 
-/* 行样式 */
 .bal-row {
     display: flex;
     justify-content: space-between;
