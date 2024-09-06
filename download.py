@@ -34,21 +34,22 @@ os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
 REPO_ID = "EPFL-CVLab/OpenMaterial"
 
 if __name__ == "__main__":    
+    BASE_DIR = f"datasets"
     LOCAL_DIR = f"datasets/openmaterial"
     if args.type in bsdf_names:
         material_type = args.type
         os.makedirs(LOCAL_DIR, exist_ok=True)
-        snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"{material_type}-*.tar", ignore_patterns="depth*.tar",local_dir=LOCAL_DIR, token=args.token)
+        snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"{material_type}-*.tar", ignore_patterns=["depth-*.tar", "groundtruth.tar"],local_dir=LOCAL_DIR, token=args.token)
         tar_paths = glob(os.path.join(LOCAL_DIR, f"{material_type}-*.tar"))
         for tar_path in tar_paths:
             cmd = f'tar -xvf {tar_path} -C {LOCAL_DIR}'
             print(cmd)
             os.system(cmd)
         if args.depth:
-            snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"depth-{material_type}*.tar",local_dir=LOCAL_DIR, token=args.token)
+            snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"depth-{material_type}*.tar",ignore_patterns="groundtruth.tar", local_dir=LOCAL_DIR, token=args.token)
     elif args.type == 'all':
         os.makedirs(LOCAL_DIR, exist_ok=True)
-        snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns="*.tar", ignore_patterns="depth-*.tar",local_dir=LOCAL_DIR, token=args.token)
+        snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns="*.tar", ignore_patterns=["depth-*.tar", "groundtruth.tar"], local_dir=LOCAL_DIR, token=args.token)
         tar_paths = glob(os.path.join(LOCAL_DIR, "*.tar"))
         for tar_path in tar_paths:
             cmd = f'tar -xvf {tar_path} -C {LOCAL_DIR}'
@@ -68,3 +69,23 @@ if __name__ == "__main__":
     cmd = f'rm -r {LOCAL_DIR}/*.tar'
     print(cmd)
     os.system(cmd)
+
+    cmd = f'rm -r {LOCAL_DIR}/.cache'
+    if os.path.exists(f"{LOCAL_DIR}/.cache"):
+        print(cmd)
+        os.system(cmd)
+
+    cmd = f'rm -r {LOCAL_DIR}/.huggingface'
+    if os.path.exists(f"{LOCAL_DIR}/.huggingface"):
+        print(cmd)
+        os.system(cmd)
+
+    cmd = f'rm -r {BASE_DIR}/.cache'
+    if os.path.exists(f"{BASE_DIR}/.cache"):
+        print(cmd)
+        os.system(cmd)
+
+    cmd = f'rm -r {BASE_DIR}/.huggingface'
+    if os.path.exists(f"{BASE_DIR}/.huggingface"):
+        print(cmd)
+        os.system(cmd)
