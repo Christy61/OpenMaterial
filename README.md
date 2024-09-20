@@ -7,11 +7,17 @@ Get your own token
 2. On the "Settings" page, click "Access Tokens" on the left side.
 3. Generate a new Token and copy it.
 
+download complete dataset:
 ```shell
 python download.py --token <your-token> --type all
 ``` 
 
-after running this, The following file structure is obtained
+download ablation dataset:
+```shell
+python download.py --token <your-token> --type ablation
+``` 
+
+after downlaod complete dataset, The following file structure is obtained
 
 ```shell
 datasets

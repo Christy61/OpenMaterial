@@ -39,7 +39,7 @@ if __name__ == "__main__":
     if args.type in bsdf_names:
         material_type = args.type
         os.makedirs(LOCAL_DIR, exist_ok=True)
-        snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"{material_type}-*.tar", ignore_patterns=["depth-*.tar", "groundtruth.tar"],local_dir=LOCAL_DIR, token=args.token)
+        snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"{material_type}-*.tar", ignore_patterns=["depth-*.tar", "groundtruth.tar", "ablation-*.tar"],local_dir=LOCAL_DIR, token=args.token)
         tar_paths = glob(os.path.join(LOCAL_DIR, f"{material_type}-*.tar"))
         for tar_path in tar_paths:
             cmd = f'tar -xvf {tar_path} -C {LOCAL_DIR}'
@@ -47,9 +47,26 @@ if __name__ == "__main__":
             os.system(cmd)
         if args.depth:
             snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"depth-{material_type}*.tar",ignore_patterns="groundtruth.tar", local_dir=LOCAL_DIR, token=args.token)
+        snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"groundtruth.tar", local_dir="./datasets", token=args.token)
+        cmd = f'tar -xvf ./datasets/groundtruth.tar -C ./datasets'
+        print(cmd)
+        os.system(cmd)
+    elif args.type == 'ablation':
+        snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"ablation-*.tar", ignore_patterns=["depth-*.tar", "groundtruth.tar"],local_dir=LOCAL_DIR, token=args.token)
+        tar_paths = glob(os.path.join(LOCAL_DIR, f"ablation-*.tar"))
+        for tar_path in tar_paths:
+            cmd = f'tar -xvf {tar_path} -C {LOCAL_DIR}'
+            print(cmd)
+            os.system(cmd)
+        if args.depth:
+            snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"depth-ablation*.tar", local_dir=LOCAL_DIR, token=args.token)
+        snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"groundtruth-ablation.tar", local_dir="./datasets", token=args.token)
+        cmd = f'tar -xvf ./datasets/groundtruth-ablation.tar -C ./datasets'
+        print(cmd)
+        os.system(cmd)
     elif args.type == 'all':
         os.makedirs(LOCAL_DIR, exist_ok=True)
-        snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns="*.tar", ignore_patterns=["depth-*.tar", "groundtruth.tar"], local_dir=LOCAL_DIR, token=args.token)
+        snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns="*.tar", ignore_patterns=["depth-*.tar", "groundtruth.tar", "ablation-*.tar", "groundtruth-ablation.tar"], local_dir=LOCAL_DIR, token=args.token)
         tar_paths = glob(os.path.join(LOCAL_DIR, "*.tar"))
         for tar_path in tar_paths:
             cmd = f'tar -xvf {tar_path} -C {LOCAL_DIR}'
@@ -57,14 +74,12 @@ if __name__ == "__main__":
             os.system(cmd)
         if args.depth:
             snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns="depth*.tar", local_dir=LOCAL_DIR, token=args.token)
+        snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"groundtruth.tar", local_dir="./datasets", token=args.token)
+        cmd = f'tar -xvf ./datasets/groundtruth.tar -C ./datasets'
+        print(cmd)
+        os.system(cmd)
     else:
         raise ValueError("There's no such material.")
-
-    os.makedirs("./datasets", exist_ok=True)
-    snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"groundtruth.tar", ignore_patterns="depth*.tar",local_dir="./datasets", token=args.token)
-    cmd = f'tar -xvf ./datasets/groundtruth.tar -C ./datasets'
-    print(cmd)
-    os.system(cmd)
 
     cmd = f'rm -r {LOCAL_DIR}/*.tar'
     print(cmd)
