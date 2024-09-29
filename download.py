@@ -36,6 +36,7 @@ REPO_ID = "EPFL-CVLab/OpenMaterial"
 if __name__ == "__main__":    
     BASE_DIR = f"datasets"
     LOCAL_DIR = f"datasets/openmaterial"
+    LOCAL_DIR_ABLATION = f"datasets/ablation"
     if args.type in bsdf_names:
         material_type = args.type
         os.makedirs(LOCAL_DIR, exist_ok=True)
@@ -55,7 +56,7 @@ if __name__ == "__main__":
         snapshot_download(repo_id=REPO_ID, repo_type="dataset", allow_patterns=f"ablation-*.tar", ignore_patterns=["depth-*.tar", "groundtruth.tar"],local_dir=LOCAL_DIR, token=args.token)
         tar_paths = glob(os.path.join(LOCAL_DIR, f"ablation-*.tar"))
         for tar_path in tar_paths:
-            cmd = f'tar -xvf {tar_path} -C {LOCAL_DIR}'
+            cmd = f'tar -xvf {tar_path} -C {LOCAL_DIR_ABLATION}'
             print(cmd)
             os.system(cmd)
         if args.depth:
