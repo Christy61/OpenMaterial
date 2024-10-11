@@ -82,11 +82,11 @@ if __name__ == "__main__":
     else:
         raise ValueError("There's no such material.")
 
-    cmd = f'rm -r {BASE_DIR}/*.tar'
+    cmd = f'rm -rf {BASE_DIR}/*.tar'
     print(cmd)
     os.system(cmd)
 
-    cmd = f'rm -r {LOCAL_DIR}/*.tar'
+    cmd = f'rm -rf {LOCAL_DIR}/*.tar'
     print(cmd)
     os.system(cmd)
 
