@@ -54,6 +54,6 @@ if __name__=="__main__":
     chamfer = (mean_gt + mean_pr) / 2 * 100
     results = f'{args.object}:{args.method}:{stem}:{chamfer:.5f}'
     os.makedirs(f'{args.output}/{args.object}', exist_ok=True)
-    with open(os.path.join(args.output, args.object, f"{args.method}-mesh-output.txt"), "w") as file:
+    with open(os.path.join(args.output, args.object, f"{args.method}-mesh-output.txt"), "a") as file:
         file.write(results + '\n')
     print(results)

@@ -89,28 +89,8 @@ def mesh_cds():
         cds_dir['instant-nsr-pl-wmask'][name] = cds_dir['instant-nsr-pl-wmask'][name] / count_dir['instant-nsr-pl-wmask'][name]
     return cds_dir
 
-def sum_key():
-    folder_path = 'datasets/openmaterial'
-    object_names = os.listdir(folder_path)
-    data = []
-    for object_name in object_names:
-        data_path = os.listdir(os.path.join(folder_path, object_name))[0]
-        parts = data_path.split('-')
-        emitter_name = parts[0]
-        emitter_name = emitter_name.replace('+', '-')
-        bsdf_name = '-'.join(parts[1:])
-        new_data = {
-        "uid": object_name,
-        "envmap": emitter_name,
-        "bsdf": bsdf_name
-        }
-        data.append(new_data)
-
-    with open(f"key.json", "w") as file:
-        json.dump(data, file, indent=4)
 
 if __name__ == '__main__':
-    sum_key()
     psnr, ssim, lpips = {}, {}, {}
     psnr['instant-nsr-pl(nerf-wmask)'], ssim['instant-nsr-pl(nerf-wmask)'], lpips['instant-nsr-pl(nerf-wmask)'] = sum_instant_nsr_pl()
     cds = mesh_cds()

@@ -2,15 +2,24 @@
 
 directory=$1
 output_dir=$2
-
+method=$3
+ablation=$4
 if [ -d "$directory" ]; then
+    subdir_name1=$method
     # for subdir1 in "$directory"/*; do
         # subdir_name1=$(basename "$subdir1")
-        subdir_name1='instant-nsr-pl-wmask'
         for subdir2 in "${directory}/${subdir_name1}/meshes/"*; do
             subdir_name2=$(basename "$subdir2")
             echo "clean_mesh start: ${subdir_name1}"
-            python eval/clean_mesh.py --method ${subdir_name1} --directory ${directory}/${subdir_name1} --object_name ${subdir_name2}
+            if [ "$ablation" = "true" ]; then
+                python eval/clean_mesh.py --dataset_dir ../datasets/ablation \
+                --groundtruth_dir ../datasets/groundtruth_ablation \
+                --method ${subdir_name1} \
+                --directory ${directory}/${subdir_name1} \
+                --object_name ${subdir_name2}
+            else
+                python eval/clean_mesh.py --method ${subdir_name1} --directory ${directory}/${subdir_name1} --object_name ${subdir_name2}
+            fi
             echo "evaluation start:"
             for subdir3 in "${directory}/${subdir_name1}/CleanedMesh/${subdir_name2}/"*; do
                 subdir_name3=$(basename "$subdir3")

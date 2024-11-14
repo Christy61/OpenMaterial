@@ -31,8 +31,8 @@ def gen_camera_intrinsic(width, height, fov_x, fov_y):
     fy = height / 2.0 / math.tan(fov_y / 180 * math.pi / 2.0)
     return fx, fy
 
-def clean_points_by_mask(points, scene_name, imgs_idx=None, minimal_vis=0, mask_dilated_size=11):
-    json_path = glob(f'../datasets/openmaterial/{scene_name}/*/transforms_train.json')[0]
+def clean_points_by_mask(points, bsdf_name, scene_name, imgs_idx=None, minimal_vis=0, mask_dilated_size=11):
+    json_path = glob(f'{args.dataset_dir}/{scene_name}/*{bsdf_name}/transforms_train.json')[0]
     with open(json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     fov_x = 37.8492
@@ -55,7 +55,7 @@ def clean_points_by_mask(points, scene_name, imgs_idx=None, minimal_vis=0, mask_
     bottom = np.array([0, 0, 0, 1.]).reshape([1, 4])
     scale_mat = np.diag([1.0, 1.0, 1.0, 1.0])
     
-    mask_lis = sorted(glob(f'../datasets/openmaterial/{scene_name}/*/train/mask/*.png'))
+    mask_lis = sorted(glob(f'{args.dataset_dir}/{scene_name}/*{bsdf_name}/train/mask/*.png'))
     n_images = len(mask_lis)
     inside_mask = np.zeros(len(points))
 
@@ -99,8 +99,8 @@ def clean_points_by_mask(points, scene_name, imgs_idx=None, minimal_vis=0, mask_
     return inside_mask > minimal_vis
 
 
-def clean_points_by_visualhull(points, scene_name, imgs_idx=None, minimal_vis=0, mask_dilated_size=11):
-    json_path = glob(f'../datasets/openmaterial/{scene_name}/*/transforms_train.json')[0]
+def clean_points_by_visualhull(points, bsdf_name, scene_name, imgs_idx=None, minimal_vis=0, mask_dilated_size=11):
+    json_path = glob(f'{args.dataset_dir}/{scene_name}/*{bsdf_name}/transforms_train.json')[0]
     with open(json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     fov_x = 37.8492
@@ -123,12 +123,11 @@ def clean_points_by_visualhull(points, scene_name, imgs_idx=None, minimal_vis=0,
     ])
     bottom = np.array([0, 0, 0, 1.]).reshape([1, 4])
     scale_mat = np.diag([1.0, 1.0, 1.0, 1.0])
-    mask_lis = sorted(glob(f'../datasets/openmaterial/{scene_name}/*/train/mask/*.png'))
+    mask_lis = sorted(glob(f'{args.dataset_dir}/{scene_name}/*{bsdf_name}/train/mask/*.png'))
     n_images = len(mask_lis)
     outside_mask = np.zeros(len(points))
     if imgs_idx is None:
         imgs_idx = [i for i in range(n_images)]
-
     for i in imgs_idx:
         cam_pose_ = np.matmul(data['frames'][i]['transform_matrix'], flip_mat)
         cam_pose = np.array(cam_pose_)
@@ -186,11 +185,11 @@ def find_closest_point(p1, d1, p2, d2):
 
     return closest_point
 
-def clean_mesh_faces_by_mask(mesh_file, new_mesh_file, scene_name, imgs_idx, cut_y=-1.0, minimal_vis=0, mask_dilated_size=11):
+def clean_mesh_faces_by_mask(mesh_file, new_mesh_file, bsdf_name, scene_name, imgs_idx, cut_y=-1.0, minimal_vis=0, mask_dilated_size=11):
     old_mesh = trimesh.load(mesh_file)
     old_vertices = old_mesh.vertices[:]
     old_faces = old_mesh.faces[:]
-    mask = clean_points_by_mask(old_vertices, scene_name, imgs_idx, minimal_vis, mask_dilated_size)
+    mask = clean_points_by_mask(old_vertices, bsdf_name, scene_name, imgs_idx, minimal_vis, mask_dilated_size)
     y_mask = old_vertices[:, 1] >= cut_y
     mask = mask & y_mask
     indexes = np.ones(len(old_vertices)) * -1
@@ -208,12 +207,12 @@ def clean_mesh_faces_by_mask(mesh_file, new_mesh_file, scene_name, imgs_idx, cut
     new_mesh.export(new_mesh_file)
 
 
-def clean_mesh_faces_by_visualhull(mesh_file, new_mesh_file, scene_name, imgs_idx, minimal_vis=0, mask_dilated_size=11):
+def clean_mesh_faces_by_visualhull(mesh_file, new_mesh_file, bsdf_name, scene_name, imgs_idx, minimal_vis=0, mask_dilated_size=11):
     old_mesh = trimesh.load(mesh_file)
     os.remove(mesh_file)
     old_vertices = old_mesh.vertices[:]
     old_faces = old_mesh.faces[:]
-    mask, scale = clean_points_by_visualhull(old_vertices, scene_name, imgs_idx, minimal_vis, mask_dilated_size)
+    mask, scale = clean_points_by_visualhull(old_vertices, bsdf_name, scene_name, imgs_idx, minimal_vis, mask_dilated_size)
     indexes = np.ones(len(old_vertices)) * -1
     indexes = indexes.astype(np.int64)
     indexes[np.where(mask)] = np.arange(len(np.where(mask)[0]))
@@ -258,6 +257,8 @@ def load_integrator(scene_dict):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument('--dataset_dir', type=str, default='../datasets/openmaterial')
+    parser.add_argument('--groundtruth_dir', type=str, default='../datasets/groundtruth')
     parser.add_argument('--method', type=str)
     parser.add_argument('--directory', type=str)
     parser.add_argument('--object_name', type=str)
@@ -268,28 +269,29 @@ if __name__ == "__main__":
     object_name = args.object_name
 
     scene_list = os.listdir(f'{directory}/meshes/{object_name}')
+    print(scene_list)
     for scene_name in scene_list:
         scene_name = scene_name.split(".")[0]
         base_path = f"{directory}/meshes/{object_name}"
         print("processing:", scene_name)
-        old_mesh_file_list = glob(os.path.join(base_path, "*.obj")) + glob(os.path.join(base_path, "*.ply"))
-        for old_mesh_file in old_mesh_file_list:
-            clean_mesh_file = os.path.join(base_path, f"clean_{scene_name}.ply")
-            os.makedirs("{}/CleanedMesh/{}".format(directory, object_name), exist_ok=True)
-            visualhull_mesh_file = f'{directory}/CleanedMesh/{object_name}/{scene_name}.ply'
-            scene_path = glob(os.path.join('../datasets/groundtruth', object_name, '*.ply'))[0]
-            scene_path = os.path.abspath(scene_path)
-            scene_dict= {'type': 'scene'}
-            scene_dict = load_integrator(scene_dict)
-            scene_dict = load_object(scene_dict, scene_path)
-            scene = mi.load_dict(scene_dict)
-            bbox = scene.bbox()
-            cut_y = bbox.min.y
-            
-            clean_mesh_faces_by_mask(old_mesh_file, clean_mesh_file, object_name, None, cut_y=cut_y, minimal_vis=2,
-                                    mask_dilated_size=mask_kernel_size)
+        
+        old_mesh_file = glob(os.path.join(base_path, f"{scene_name}*"))[0]
+        clean_mesh_file = os.path.join(base_path, f"clean_{scene_name}.ply")
+        os.makedirs("{}/CleanedMesh/{}".format(directory, object_name), exist_ok=True)
+        visualhull_mesh_file = f'{directory}/CleanedMesh/{object_name}/{scene_name}.ply'
+        scene_path = glob(os.path.join(f'{args.groundtruth_dir}', object_name, '*.ply'))[0]
+        scene_path = os.path.abspath(scene_path)
+        scene_dict= {'type': 'scene'}
+        scene_dict = load_integrator(scene_dict)
+        scene_dict = load_object(scene_dict, scene_path)
+        scene = mi.load_dict(scene_dict)
+        bbox = scene.bbox()
+        cut_y = bbox.min.y
+        
+        clean_mesh_faces_by_mask(old_mesh_file, clean_mesh_file, scene_name, object_name, None, cut_y=cut_y, minimal_vis=2,
+                                mask_dilated_size=mask_kernel_size)
 
-            clean_mesh_faces_by_visualhull(clean_mesh_file, visualhull_mesh_file, object_name, None, minimal_vis=2,
-                                        mask_dilated_size=mask_kernel_size + 20)
+        clean_mesh_faces_by_visualhull(clean_mesh_file, visualhull_mesh_file, scene_name, object_name, None, minimal_vis=2,
+                                    mask_dilated_size=mask_kernel_size + 20)
 
-            print("finish processing ", scene_name)
+        print("finish processing ", scene_name)

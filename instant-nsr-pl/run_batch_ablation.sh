@@ -2,7 +2,7 @@
 start=${1:-0}
 end=${2:-10}
 
-directory="../datasets/openmaterial"
+root_dir="../datasets/ablation"
 
 # rm -rf ../Mesh/instant-nsr-pl-wmask/
 
@@ -38,8 +38,8 @@ if [ -d "$root_dir" ]; then
 
         python launch.py \
         --config configs/neus-openmaterial-wmask.yaml \
-        --output_dir ../Mesh/instant-nsr-pl-wmask/meshes/${subdir_name1} \
-        --gpu $3 \
+        --output_dir ../Mesh-ablation/instant-nsr-pl-wmask/meshes/${subdir_name1} \
+        --gpu 0 \
         --train \
         dataset.bsdf_name=${bsdf_name} \
         dataset.object=${subdir_name1} \
@@ -48,20 +48,20 @@ if [ -d "$root_dir" ]; then
         trial_name=${subdir_name1}
         rm -r exp/neus-openmaterial-wmask-${subdir_name2}/${subdir_name1}
 
-        new_line="            with open(os.path.join(f'../output', self.config.dataset.object, \"instant-nsr-pl-wmask.txt\"), \"w\") as file:"
+        new_line="            with open(os.path.join(f'../output-ablation', self.config.dataset.object, f'{self.config.dataset.scene}+insr', \"instant-nsr-pl-wmask.txt\"), \"a\") as file:"
         sed -i "219s|.*|$new_line|"  systems/nerf.py
-        python launch.py \
+        CUDA_VISIBLE_DEVICES=1 python launch.py \
         --config configs/nerf-openmaterial-wmask.yaml \
-        --gpu $3 \
+        --gpu 0 \
         --train \
         dataset.bsdf_name=${bsdf_name} \
         dataset.object=${subdir_name1} \
         dataset.scene=${subdir_name2} \
         dataset.root_dir=${root_dir}/${subdir_name1}/${subdir_name2} \
         trial_name=${subdir_name1} \
-        render_save_dir=../output
+        render_save_dir=../output-ablation
         rm -r exp/nerf-openmaterial-wmask-${subdir_name2}/${subdir_name1}
-        
+
         done
     done
 else
