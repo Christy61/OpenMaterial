@@ -4,7 +4,7 @@ The repository contains scripts for download and evaluation on the openmaterial 
 
 <img src="assets/teaser.png">
 
-we introduce the OpenMaterial dataset, comprising 1001 objects made of 295 distinct materials—including conductors, dielectrics, plastics, and their roughened variants— and captured under 723 diverse lighting conditions.
+We introduce the OpenMaterial dataset, comprising 1001 objects made of 295 distinct materials—including conductors, dielectrics, plastics, and their roughened variants— and captured under 723 diverse lighting conditions.
 
 For working with this dataset, you can refer to the following steps:
 
